@@ -74,7 +74,10 @@
         - Django ORM
         - Django для миграций
     Фронтенд:
-        ???
+        - Vue
+        - Vuex
+        - Router
+        - TypeScript???
 
 # 4. Требования к дизайну
 
