@@ -7,7 +7,7 @@ export default function getInstitutes(){
     const fetching = async () => {
         try {
             const response = await axios.get('/GetAllInstitutes');
-            // institutes.value = response.data;
+            institutes.value = response.data;
         } catch (e) {
             institutes.value = [
                 {

@@ -2,7 +2,7 @@
 import {defineComponent} from "vue"
 import PageTitle from "@/components/UI/PageTitle.vue";
 export default defineComponent({
-  name: "TeachersViews",
+  name: "TeachersView",
   components: {
     PageTitle,
   }
