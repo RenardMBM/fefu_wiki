@@ -13,10 +13,21 @@ export default defineComponent({
 
 <style scoped>
 .btn {
-  padding: 10px 15px;
+  border-radius: 7px;
+  padding: 7px 45px;
   background: none;
-  color: teal;
-  border: 1px solid teal;
+  color: black;
+  border: 1px solid black;
   cursor: pointer;
+}
+.btn:hover {
+  background-color: #003F74;
+  color: white;
+  transition-duration: 0.3s;
+  border: 1px solid #003F74;
+}
+.btn:active {
+  transition-duration: 0.05s;
+  transform: translateY(1.5px);
 }
 </style>

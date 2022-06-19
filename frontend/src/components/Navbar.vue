@@ -11,7 +11,7 @@ export default defineComponent({
   <div class="navbar">
     <div style="cursor: pointer" @click="$router.push('/')"><img class="logo" src="@/assets/logo.png" alt="FEFU wiki"></div>
     <div class="navbar__btns">
-      <nav-button style="border-top: 1px solid;" @click="$router.push('/institutes')">Институты и школы</nav-button>
+      <nav-button style="border-top: 1px solid #bdbdbd;" @click="$router.push('/institutes')">Институты и школы</nav-button>
       <nav-button  @click="$router.push('/teachers')">Наши преподаватели</nav-button>
     </div>
   </div>
@@ -25,7 +25,7 @@ export default defineComponent({
   top: 0;
   /*display: block!important;*/
   position: absolute;
-  border-right: 1px solid black;
+  border-right: 1px solid #bdbdbd;
   /*padding-left: 0.5em;*/
 }
 .navbar__btns{

@@ -17,8 +17,8 @@ export default defineComponent({
   width: 10em;
   padding: 1em 0;
   background: none;
-  color: teal;
-  border-bottom: 1px solid teal;
+  color: #003F74;
+  border-bottom: 1px solid #bdbdbd;
   cursor: pointer;
   /*border: 1px solid teal;*/
 }

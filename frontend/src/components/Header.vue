@@ -37,7 +37,7 @@ export default defineComponent({
     <div class="right-header">
       <div class="account-block">
         <div style="margin-right: 0.5em" class="account">
-          <img src="https://img.icons8.com/fluency-systems-filled/344/guest-male.png" alt="">
+          <i class="bi bi-person-circle"></i>&nbsp;
           <div>{{accountName}}
           </div>
         </div>
@@ -48,7 +48,7 @@ export default defineComponent({
           v-model="searchQuery"
           placeholder="Поиск...."
         />
-        <my-button>Search</my-button>
+        <button class="icon"><i class="bi bi-search"></i></button>
       </div>
     </div>
   </div>
@@ -91,5 +91,17 @@ export default defineComponent({
 }
 .search-block .search-input{
   margin-right: 0.5em;
+}
+.search-block .icon{
+  cursor: pointer;
+  background: none;
+  position: absolute;
+  top: 50%;
+  margin-right: 18px;
+  margin-top: 13px;
+  z-index: 1;
+}
+.search-block .icon:active{
+  transform: translateY(1px);
 }
 </style>

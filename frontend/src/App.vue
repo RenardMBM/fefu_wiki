@@ -26,8 +26,7 @@ export default defineComponent({
 }
 .app {
   margin: 7em 0  0 10em;
-  border-top: 1px solid black;
-
+  border-top: 1px solid #bdbdbd;
   padding: 20px;
   /*height: 100%;*/
 }
