@@ -9,7 +9,7 @@ export default createStore<State>({
   state: {
     user: {
       isAuth:false,
-      permission:0,
+      permission:2,
       account:""
     }
   },

@@ -13,21 +13,17 @@ export default defineComponent({
   data() {
     return {
       searchQuery: '',
-      accountName: ''
     }
   },
-  methods:{
-    updateAccount(){
+  computed: {
+    accountName(){
       if (store.state.user.isAuth){
-        this.accountName = store.state.user.account
+         return  store.state.user.account
       }
       else{
-        this.accountName = 'Вы не представились системе';
+         return  'Вы не представились системе';
       }
     }
-  },
-  mounted() {
-    this.updateAccount();
   }
 })
 </script>
@@ -38,8 +34,7 @@ export default defineComponent({
       <div class="account-block">
         <div style="margin-right: 0.5em" class="account">
           <i class="bi bi-person-circle"></i>&nbsp;
-          <div>{{accountName}}
-          </div>
+          <div>{{accountName}}</div>
         </div>
         <my-button>Войти</my-button>
       </div>

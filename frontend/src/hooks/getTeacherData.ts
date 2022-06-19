@@ -22,7 +22,6 @@ export default function getTeacherData(teacher_id: number){
 
     });
 
-    console.log(teacher_id)
     const fetching = async () => {
         try {
             const response = await axios.get(`/teacher/${teacher_id}`);

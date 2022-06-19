@@ -1,9 +1,16 @@
 <script lang="ts">
 import {defineComponent} from "vue"
+import store from "@/store"
 import NavButton from "@/components/UI/NavButton.vue";
+
 export default defineComponent({
   name: "Navbar",
   components: {NavButton},
+  computed: {
+    permission() {
+      return store.state.user.permission
+    }
+  }
 })
 </script>
 
@@ -13,6 +20,7 @@ export default defineComponent({
     <div class="navbar__btns">
       <nav-button style="border-top: 1px solid #bdbdbd;" @click="$router.push('/institutes')">Институты и школы</nav-button>
       <nav-button  @click="$router.push('/teachers')">Наши преподаватели</nav-button>
+      <nav-button v-if="permission > 1" @click="">Заявки на модерацию</nav-button>
     </div>
   </div>
 </template>

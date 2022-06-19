@@ -5,9 +5,11 @@ import PageTitle from "@/components/UI/PageTitle.vue";
 import ContentBlock from "@/components/UI/ContentBlock.vue";
 import ErrorView from "@/views/ErrorView.vue";
 import InfoColumn from "@/components/InfoColumn.vue";
+import MarkDown from "@/components/MarkDown.vue";
 export default defineComponent({
   name: "MyPost",
   components: {
+    MarkDown,
     PageTitle,
     ContentBlock,
     ErrorView,
@@ -31,7 +33,9 @@ export default defineComponent({
   <div v-else class="post">
     <div class="post-content">
       <page-title class="post-title">{{ post.title }}</page-title>
-      <content-block class="post-text">{{ post.text }}</content-block>
+      <content-block>
+        <mark-down :text="post.text"></mark-down>
+      </content-block>
     </div>
     <info-column :data="post.info"></info-column>
   </div>
