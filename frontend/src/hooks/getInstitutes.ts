@@ -1,6 +1,6 @@
 import axios from "axios";
 import {ref, onMounted} from 'vue';
-import Institute from "@/models/InstituteModel";
+import Institute from "@/models/InstituteItemModel";
 export default function getInstitutes(){
     const institutes = ref(Array<Institute>());
 

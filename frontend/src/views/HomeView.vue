@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue';
 import PageTitle from "@/components/UI/PageTitle.vue";
 import MySubtitle from "@/components/UI/MySubtitle.vue";
-import TopPosts from "@/components/TopPosts.vue";
+import TopTeachers from "@/components/TopTeachers.vue";
 import InstitutesList from "@/components/InstitutesList.vue";
 
 export default defineComponent({
@@ -11,20 +11,22 @@ export default defineComponent({
     InstitutesList,
     PageTitle,
     MySubtitle,
-    TopPosts
+    TopTeachers
   },
   data(){
     return{
       tops:[
         {
           title: "Ближайшие дни рожедения",
-          posts: [
+          teachers: [
             {
+              id: 0,
               title: "Селезнев Тим Эдуардович",
               subtitle: "Дата рождения",
               value: "10.01.2002"
             },
             {
+              id: 1,
               title: "Cущенко Андрей Андреевич",
               subtitle: "Дата рождения",
               value: "10.01.2002"
@@ -33,8 +35,9 @@ export default defineComponent({
         },
         {
           title: "Самые халявные",
-          posts: [
+          teachers: [
             {
+              id: 0,
               title: "Селезнев Тим Эдуардович",
               subtitle: "Халявность",
               value: "4.5"
@@ -43,8 +46,9 @@ export default defineComponent({
         },
         {
           title: "Самые строгие",
-          posts: [
+          teachers: [
             {
+              id: 1,
               title: "Cущенко Андрей Андреевич",
               subtitle: "Халявность",
               value: "4"
@@ -68,8 +72,8 @@ export default defineComponent({
   <div class="top-block">
     <my-subtitle>Топ преподавателей</my-subtitle>
     <div class="top-list">
-      <top-posts v-for="top in tops"
-                 :title="top.title" :posts="top.posts"></top-posts>
+      <top-teachers v-for="top in tops"
+                 :title="top.title" :teachers="top.teachers"></top-teachers>
     </div>
   </div>
 </template>

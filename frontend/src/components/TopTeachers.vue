@@ -1,14 +1,15 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
-import PostItem from "@/components/PostItem.vue";
+import { defineComponent, PropType} from 'vue';
+import TeacherItem from "@/components/TeacherItem.vue";
 import ContentBlock from "@/components/UI/ContentBlock.vue";
 import PageTitle from "@/components/UI/PageTitle.vue";
 import MySubtitle from "@/components/UI/MySubtitle.vue";
+import Teacher from "@/models/TeacherItemModel";
 
 export default defineComponent({
-  name: "TopPosts",
+  name: "TopTeachers",
   components: {
-    PostItem,
+    TeacherItem,
     ContentBlock,
     PageTitle,
     MySubtitle
@@ -18,8 +19,8 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    posts: {
-      type: Array,
+    teachers: {
+      type: Array as PropType<Array<Teacher>>,
       required: true,
     }
   }
@@ -31,10 +32,10 @@ export default defineComponent({
     <div class="top-title">
       {{title}}
     </div>
-    <div class="top-list" v-if="posts.length > 0">
-      <post-item class="top-list-item"
-          v-for="post in posts"
-          :post="post"
+    <div class="top-list" v-if="teachers.length > 0">
+      <teacher-item class="top-list-item"
+          v-for="teacher in teachers"
+          :teacher="teacher"
       />
     </div>
     <div class="top-list-item" v-else >

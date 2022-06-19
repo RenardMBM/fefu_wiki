@@ -1,6 +1,6 @@
 <script lang="ts">
 import ContentBlock from "@/components/UI/ContentBlock.vue";
-import Institute from "@/models/InstituteModel";
+import InstituteItem from "@/models/InstituteItemModel";
 import {defineComponent, PropType} from "vue";
 
 export default defineComponent({
@@ -10,7 +10,7 @@ export default defineComponent({
   },
   props: {
     institute: {
-      type: Object as PropType<Institute>,
+      type: Object as PropType<InstituteItem>,
       required: true,
     }
   }

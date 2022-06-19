@@ -25,7 +25,6 @@ export default defineComponent({
   font-family: sans-serif;
 }
 .app {
-
   margin: 7em 0  0 10em;
   border-top: 1px solid black;
 
