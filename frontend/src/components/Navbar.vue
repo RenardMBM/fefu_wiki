@@ -1,3 +1,12 @@
+<script lang="ts">
+import {defineComponent} from "vue"
+import NavButton from "@/components/UI/NavButton.vue";
+export default defineComponent({
+  name: "Navbar",
+  components: {NavButton},
+})
+</script>
+
 <template>
   <div class="navbar">
     <div style="cursor: pointer" @click="$router.push('/')"><img class="logo" src="@/assets/logo.png" alt="FEFU wiki"></div>
@@ -7,14 +16,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import NavButton from "@/components/UI/NavButton";
-export default {
-  name: "Navbar",
-  components: {NavButton}
-}
-</script>
 
 <style scoped>
 .navbar{

@@ -1,20 +1,22 @@
-<template>
-  <input :value="modelValue" @input="updateInput" class="input" type="text">
-</template>
-
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from "vue"
+export default defineComponent({
   name: 'my-input',
   props: {
-    modelValue: [String, Number]
+    modelValue: String
   },
   methods: {
-    updateInput(event) {
+    updateInput(event: any) {
+      // console.log(event.target.value);
       this.$emit('update:modelValue', event.target.value)
     }
   }
-}
+})
 </script>
+
+<template>
+  <input :value="modelValue" @input="updateInput" class="input" type="text">
+</template>
 
 <style scoped>
 .input {

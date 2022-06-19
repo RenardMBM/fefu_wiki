@@ -1,12 +1,6 @@
-<template>
-  <div class="post">
-    <div><strong>{{ post.title }}</strong> </div>
-    <div>{{ post.subtitle }}: {{ post.value }}</div>
-  </div>
-</template>
-
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from "vue"
+export default defineComponent({
   name: "PostItem",
   props: {
     post: {
@@ -14,8 +8,15 @@ export default {
       required: true,
     }
   }
-}
+})
 </script>
+
+<template>
+  <div class="post">
+    <div><strong>{{ post.title }}</strong> </div>
+    <div>{{ post.subtitle }}: {{ post.value }}</div>
+  </div>
+</template>
 
 <style scoped>
 .post {

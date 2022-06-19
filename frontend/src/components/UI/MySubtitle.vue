@@ -1,3 +1,11 @@
+<script>
+import {defineComponent} from "vue";
+
+export default defineComponent({
+  name: "my-subtitle",
+})
+</script>
+
 <template>
   <div class="my-subtitle">
     <strong>
@@ -5,12 +13,6 @@
     </strong>
   </div>
 </template>
-
-<script>
-export default {
-  name: "my-subtitle",
-}
-</script>
 
 <style scoped>
 .my-subtitle{

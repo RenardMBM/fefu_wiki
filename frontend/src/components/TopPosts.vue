@@ -1,5 +1,33 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+import PostItem from "@/components/PostItem.vue";
+import ContentBlock from "@/components/UI/ContentBlock.vue";
+import PageTitle from "@/components/UI/PageTitle.vue";
+import MySubtitle from "@/components/UI/MySubtitle.vue";
+
+export default defineComponent({
+  name: "TopPosts",
+  components: {
+    PostItem,
+    ContentBlock,
+    PageTitle,
+    MySubtitle
+  },
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    posts: {
+      type: Array,
+      required: true,
+    }
+  }
+})
+</script>
+
 <template>
-  <div class="top-column">
+  <content-block class="top-column">
     <div class="top-title">
       {{title}}
     </div>
@@ -12,41 +40,17 @@
     <div class="top-list-item" v-else >
       Список пуст
     </div>
-  </div>
+  </content-block>
 </template>
-
-<script>
-import PostItem from "@/components/PostItem";
-export default {
-  name: "TopPosts",
-  components: {
-      PostItem
-  },
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    posts: {
-      type: Array,
-      required: true,
-    }
-  }
-}
-</script>
 
 <style scoped>
 .top-title{
   font-size: 18px;
   text-align: center;
-  /*width: 100%;*/
-  /*padding: 0.5em 0 0.5em 1em;*/
 }
 .top-column{
-  background-color: #EBEEFF;
-  border-radius: 30px;
-  padding: 1em 1em 0.5em 1em;
-  width: fit-content;
+  padding-bottom: 0.5em;
+  width: fit-content!important;
 }
 .top-list{
   padding-top: 1em;

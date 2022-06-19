@@ -1,14 +1,16 @@
+<script lang="ts">
+import {defineComponent} from "vue";
+
+export default defineComponent({
+  name: "nav-button"
+})
+</script>
+
 <template>
     <button class="nav-btn">
       <slot></slot>
     </button>
 </template>
-
-<script>
-export default {
-  name: "nav-button"
-}
-</script>
 
 <style scoped>
 .nav-btn {

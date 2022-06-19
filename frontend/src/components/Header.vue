@@ -1,3 +1,37 @@
+<script lang="ts">
+import {defineComponent} from "vue"
+import MyButton from "@/components/UI/MyButton.vue";
+import MyInput from "@/components/UI/MyInput.vue";
+import store from "@/store"
+
+export default defineComponent({
+  name: "my-header",
+  components: {
+    MyInput,
+    MyButton,
+  },
+  data() {
+    return {
+      searchQuery: '',
+      accountName: ''
+    }
+  },
+  methods:{
+    updateAccount(){
+      if (store.state.user.isAuth){
+        this.accountName = store.state.user.account
+      }
+      else{
+        this.accountName = 'Вы не представились системе';
+      }
+    }
+  },
+  mounted() {
+    this.updateAccount();
+  }
+})
+</script>
+
 <template>
   <div class="header-block">
     <div class="right-header">
@@ -19,45 +53,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import MyButton from "@/components/UI/MyButton";
-import MyInput from "@/components/UI/MyInput";
-import {mapState} from 'vuex'
-
-export default {
-  name: "my-header",
-  components: {
-    MyInput,
-    MyButton,
-  },
-  data() {
-    return {
-      searchQuery: '',
-      accountName: ''
-    }
-  },
-  methods:{
-    updateAccount(){
-      if (this.isAuth){
-        this.accountName = this.account
-      }
-      else{
-        this.accountName = 'Вы не представились системе';
-      }
-    }
-  },
-  computed:{
-    ...mapState({
-      isAuth: state => state.isAuth,
-      account: state => state.account
-    })
-  },
-  mounted() {
-    this.updateAccount();
-  }
-}
-</script>
 
 <style scoped>
 .header-block{

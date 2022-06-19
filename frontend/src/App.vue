@@ -6,13 +6,14 @@
   </div>
 </template>
 
-<script>
-import Navbar from "@/components/Navbar";
-import MyHeader from "@/components/Header";
+<script lang="ts">
+import Navbar from "@/components/Navbar.vue";
+import MyHeader from "@/components/Header.vue";
+import {defineComponent} from "vue"
 
-export default {
+export default defineComponent({
   components: {MyHeader, Navbar}
-}
+})
 </script>
 
 <style>

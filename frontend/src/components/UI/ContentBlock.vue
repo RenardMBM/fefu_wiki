@@ -1,22 +1,21 @@
-<script>
+<script lang="ts">
 import {defineComponent} from "vue";
-
 export default defineComponent({
-  name: "PageTitle"
+  name: "ContentBlock"
 })
 </script>
 
 <template>
-  <div class="page-title">
+  <div class="content-block">
     <slot></slot>
   </div>
 </template>
 
 <style scoped>
-.page-title{
+.content-block{
+  background-color: #EBEEFF;
+  border-radius: 30px;
   width: 100%;
-  font-size: 24px;
-  border-bottom: 1px solid black;
-  padding-bottom: 0.2em;
+  padding: 1em;
 }
 </style>
