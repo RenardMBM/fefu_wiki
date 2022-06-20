@@ -2,7 +2,6 @@
 import {defineComponent} from "vue";
 import useCompiledMarkdown from "@/hooks/useCompiledMarkdown";
 import MyDialog from "@/components/UI/MyDialog.vue";
-import EditForm from "@/components/EditForm.vue";
 import MyButton from "@/components/UI/MyButton.vue";
 
 export default defineComponent({
@@ -10,7 +9,6 @@ export default defineComponent({
   components: {
     MyButton,
     MyDialog,
-    EditForm
   },
   props:{
     text: {
