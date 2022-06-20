@@ -30,29 +30,34 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   width: 300px;
+  background-color: #F5F5F5;
 }
 .info-img-block{
   width: 100%;
   height: auto;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid #bdbdbd;
 }
 .info-img{
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20%;
+  margin: 5%;
 }
 .info-raw{
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid #bdbdbd;
   border-top: 0;
 }
 .info-raw-title{
   padding: 0.5em;
-  border-right: 1px solid black;
+  border-right: 1px solid #bdbdbd;
   min-width: 100px;
   max-width: 100px;
   text-align: center;
+  background-color: #D9D9D9;
+  font-weight: bold;
 }
 .info-raw-value{
   padding: 0.5em;

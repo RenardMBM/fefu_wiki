@@ -72,6 +72,11 @@ export default defineComponent({
   right: 0;
   justify-content: flex-end;
 }
+@media only screen and (max-width : 800px){
+  .account-block{
+    font-size: small;
+  }
+}
 .account{
   display: flex;
 }

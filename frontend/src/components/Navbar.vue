@@ -22,8 +22,8 @@ export default defineComponent({
       <nav-button  @click="$router.push('/teachers')">Наши преподаватели</nav-button>
       <nav-button v-if="permission > 1" @click="">Заявки на модерацию</nav-button>
     </div>
-  </div>
-  <!--<div class="sandwich_navbar_button"><button>aaaa</button></div>-->
+</div>
+
 </template>
 
 <style scoped>
@@ -38,9 +38,6 @@ export default defineComponent({
   border-right: 1px solid #bdbdbd;
   /*padding-left: 0.5em;*/
 }
-.sandwich_navbar_button{
-   display: none;
-}
 @media only screen and (max-width : 800px){
 .sandwich_navbar_button{
    display: block !important;
@@ -48,8 +45,9 @@ export default defineComponent({
 .navbar{
    display: none !important;
 }
-
 }
+
+
 .navbar__btns{
   display: flex;
   justify-content: center;
