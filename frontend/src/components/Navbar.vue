@@ -22,8 +22,10 @@ export default defineComponent({
       <nav-button  @click="$router.push('/teachers')">Наши преподаватели</nav-button>
       <nav-button v-if="permission > 1" @click="">Заявки на модерацию</nav-button>
     </div>
-</div>
-
+  </div>
+  <div class="dropdown">
+    <button onclick="showNavbar()" class="drop-btn"><i class="bi bi-chevron-compact-right"></i></button>
+  </div>
 </template>
 
 <style scoped>
@@ -39,11 +41,15 @@ export default defineComponent({
   /*padding-left: 0.5em;*/
 }
 @media only screen and (max-width : 800px){
-.sandwich_navbar_button{
-   display: block !important;
+.dropdown{
+    display: inline-block !important;
 }
 .navbar{
-   display: none !important;
+   position: fixed;
+   background-color: white;
+   display: inline-block !important;
+   left: -162px;
+   transition: left 0.3s;
 }
 }
 
@@ -63,4 +69,22 @@ export default defineComponent({
   width: 100%;
   height: auto;
 }
+
+.drop-btn {
+    padding: 20px 0 20px 0;
+    background: none;
+    color: black;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown {
+    margin-top: calc(50vh - 7em - 20px);
+    left: 0;
+    transition: left 0.3s;
+    position: fixed;
+    display: none;
+    transform:rotate(0deg);
+}
+
 </style>

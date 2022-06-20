@@ -76,6 +76,9 @@ export default defineComponent({
   .account-block{
     font-size: small;
   }
+  .header-block{
+    padding-left: 0;
+  }
 }
 .account{
   display: flex;

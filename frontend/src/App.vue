@@ -32,7 +32,7 @@ export default defineComponent({
 }
 @media only screen and (max-width : 800px){
   .app {
-     margin: 7em 0 0 0;
+     margin-left: 0;
   }
 }
 button{
