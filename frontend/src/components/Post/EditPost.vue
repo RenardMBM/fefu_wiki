@@ -27,8 +27,8 @@ export default defineComponent({
     function cancelEdit(){
       editDialogVisible.value = false;
     }
-    function sendEdit(text: string){
-      sendEditData(`${router.currentRoute.value.fullPath}`, text);
+    function sendEdit(post: Post){
+      sendEditData(`${router.currentRoute.value.fullPath}`, post);
       cancelEdit();
     }
     return{
