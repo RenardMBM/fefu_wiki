@@ -34,6 +34,7 @@ export default defineComponent({
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
+  height: 100%;
 }
 
 .dialog__content {

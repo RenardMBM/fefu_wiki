@@ -10,11 +10,16 @@ export default defineComponent({
     text: {
       type: String,
       default: "#pass"
+    },
+    edit:{
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   setup(props){
     const {postMarkdown, compiledMarkdown} = useCompiledMarkdown(props.text)
-    const isEditMode = ref(true);
+    const isEditMode = ref<Boolean>(props.edit);
     return {
       postMarkdown,
       compiledMarkdown,
