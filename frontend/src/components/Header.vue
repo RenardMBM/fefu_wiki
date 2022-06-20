@@ -59,6 +59,7 @@ export default defineComponent({
   top:0;
 }
 .right-header{
+  margin-left: 1em;
   padding-right: 0.5em;
   position: absolute;
   right: 0;

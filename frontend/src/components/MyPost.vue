@@ -88,7 +88,6 @@ export default defineComponent({
 <style scoped>
 .post-content{
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap-reverse;
 }
 

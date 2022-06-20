@@ -25,10 +25,15 @@ export default defineComponent({
   font-family: sans-serif;
 }
 .app {
-  margin: 7em 0  0 10em;
+  margin: 7em 0 0 10em;
   border-top: 1px solid #bdbdbd;
   padding: 20px;
   /*height: 100%;*/
+}
+@media only screen and (max-width : 800px){
+  .app {
+     margin: 7em 0 0 0;
+  }
 }
 button{
   margin: 0;

@@ -23,10 +23,12 @@ export default defineComponent({
       <nav-button v-if="permission > 1" @click="">Заявки на модерацию</nav-button>
     </div>
   </div>
+  <!--<div class="sandwich_navbar_button"><button>aaaa</button></div>-->
 </template>
 
 <style scoped>
 .navbar{
+  display: block;
   height: 100%;
   width: 10em;
   left: 0;
@@ -35,6 +37,18 @@ export default defineComponent({
   position: absolute;
   border-right: 1px solid #bdbdbd;
   /*padding-left: 0.5em;*/
+}
+.sandwich_navbar_button{
+   display: none;
+}
+@media only screen and (max-width : 800px){
+.sandwich_navbar_button{
+   display: block !important;
+}
+.navbar{
+   display: none !important;
+}
+
 }
 .navbar__btns{
   display: flex;
