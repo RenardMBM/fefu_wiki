@@ -2,12 +2,12 @@
 import {defineComponent, ref} from "vue";
 import { useRoute } from 'vue-router'
 import getTeacherData from "@/hooks/getTeacherData";
-import MyPost from "@/components/Post/MyPost.vue";
-import EditPost from "@/components/Post/EditPost.vue";
+import BasePost from "@/components/Content/Post/BasePost.vue";
+import EditPost from "@/components/Content/Post/EditPost.vue";
 
 export default defineComponent({
   name: "TeacherView",
-  components: {EditPost, MyPost},
+  components: {EditPost, BasePost},
   setup(){
     const route = useRoute();
     const id = ref<number>(Number(route.params.id as string));
@@ -24,7 +24,7 @@ export default defineComponent({
 
 <template>
   <edit-post v-if="!isNaN(id)" :post="teacher"></edit-post>
-  <my-post :id="id" :post="teacher"></my-post>
+  <base-post :id="id" :post="teacher"></base-post>
 </template>
 
 <style scoped>

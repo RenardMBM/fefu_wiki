@@ -1,5 +1,5 @@
 <script lang="ts">
-import ContentBlock from "@/components/UI/ContentBlock.vue";
+import ContentBlock from "@/components/Content/ContentBlock.vue";
 import InstituteItem from "@/models/InstituteItemModel";
 import {defineComponent, PropType} from "vue";
 

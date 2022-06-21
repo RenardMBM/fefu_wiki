@@ -7,19 +7,18 @@ export default function getInstituteData(institute_id: number){
         title: "Институт Лучшего вуза",
         info: {
             img: "/img/logo.9e4b96be.png",
-            blocks:[
+            blocks: [
                 {
                     title: "дата создания",
-                    value: "12-01-2002"
+                    text: "12-01-2002"
                 },
                 {
                     title: "Ученая степень",
-                    value: "Доктор наук …"
+                    text: "Доктор наук …"
                 }
             ]
         },
         text: "Какая-то информацие о институте",
-
     });
 
     const fetching = async () => {

@@ -3,20 +3,20 @@ import { defineComponent, PropType } from "vue";
 
 import Post from "@/models/PostModel";
 
-import PageTitle from "@/components/UI/PageTitle.vue";
-import ContentBlock from "@/components/UI/ContentBlock.vue";
+import BaseTitle from "@/components/Content/BaseTitle.vue";
+import ContentBlock from "@/components/Content/ContentBlock.vue";
 import ErrorView from "@/views/ErrorView.vue";
-import InfoColumn from "@/components/Post/InfoColumn.vue";
-import MarkDown from "@/components/Post/MarkDown.vue";
+import PostInfoColumn from "@/components/Content/Post/PostInfoColumn.vue";
+import MarkDown from "@/components/Content/Post/MarkDown.vue";
 
 export default defineComponent({
-  name: "MyPost",
+  name: "BasePost",
   components: {
     MarkDown,
-    PageTitle,
+    BaseTitle,
     ContentBlock,
     ErrorView,
-    InfoColumn,
+    PostInfoColumn,
   },
   props: {
     id: {
@@ -33,19 +33,19 @@ export default defineComponent({
 
 <template>
   <error-view v-if="isNaN(id)"></error-view>
-  <div v-else class="post">
+  <div v-else class="base-post">
     <div class="post-main-content">
-      <page-title class="post-title">{{ post.title }}</page-title>
+      <base-title class="post-title">{{ post.title }}</base-title>
       <content-block>
         <mark-down :text="post.text"></mark-down>
       </content-block>
     </div>
-    <info-column :data="post.info"></info-column>
+    <post-info-column :data="post.info"></post-info-column>
   </div>
 </template>
 
 <style scoped>
-.post{
+.base-post{
   display: flex;
   flex-wrap: wrap-reverse;
 }

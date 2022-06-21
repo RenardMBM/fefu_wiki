@@ -14,14 +14,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="post" @click="$router.push(`/teacher/${teacher.id}`)">
+  <div class="base-post" @click="$router.push(`/teacher/${teacher.id}`)">
     <div><strong>{{ teacher.title }}</strong> </div>
     <div>{{ teacher.subtitle }}: {{ teacher.value }}</div>
   </div>
 </template>
 
 <style scoped>
-.post {
+.base-post {
   padding: 15px;
   line-height: 20px;
   border: 1px solid teal;
@@ -34,11 +34,11 @@ export default defineComponent({
   flex-direction: column;
   cursor: pointer;
 }
-.post:hover {
+.base-post:hover {
   background-color: #DBDEDF;
   transition-duration: 0.3s;
 }
-.post:active {
+.base-post:active {
   background-color: #CBCECF;
   transform: translateY(1px);
 }

@@ -1,12 +1,12 @@
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import Info from "@/models/InfoModel";
+import PostInfoColumnData from "@/models/PostInfoColumnModel";
 
 export default defineComponent({
-  name: "InfoColumn",
+  name: "PostInfoColumn",
   props: {
     data: {
-      type:Object as PropType<Info>,
+      type: Object as PropType<PostInfoColumnData>,
       required: true
     }
   }
@@ -20,7 +20,7 @@ export default defineComponent({
     </div>
     <div class="info-raw" v-for="block in data.blocks">
       <div class="info-raw-title">{{ block.title }}</div>
-      <div class="info-raw-value">{{ block.value }}</div>
+      <div class="info-raw-value">{{ block.text }}</div>
     </div>
   </div>
 </template>

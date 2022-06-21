@@ -2,7 +2,7 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
-  name: "PageTitle"
+  name: "BaseTitle"
 })
 </script>
 
@@ -21,6 +21,6 @@ export default defineComponent({
   line-height: 1.2;
   color: #212529;
   border-bottom: 1px solid #bdbdbd;
-  padding: 0.3em 0.5em 0.4em 0em;
+  padding: 0.3em 0.5em 0.4em 0;
 }
 </style>

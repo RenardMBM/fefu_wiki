@@ -1,20 +1,20 @@
 <script>
 import {defineComponent} from "vue"
 
-import PageTitle from "@/components/UI/PageTitle";
-import InstitutesList from "@/components/InstitutesList";
+import BaseTitle from "@/components/Content/BaseTitle";
+import InstitutesList from "@/components/Institute/InstitutesList";
 
 export default defineComponent({
   name: "InstitutesView",
   components: {
-    PageTitle,
+    BaseTitle,
     InstitutesList
   }
 })
 </script>
 
 <template>
-  <page-title>Институт и школы Лучшего университета</page-title>
+  <base-title>Институт и школы Лучшего университета</base-title>
   <institutes-list></institutes-list>
 </template>
 

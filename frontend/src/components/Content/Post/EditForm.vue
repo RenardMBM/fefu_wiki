@@ -1,23 +1,23 @@
 <script lang="ts">
 import {defineComponent, PropType, ref} from "vue";
 import useCompiledMarkdown from "@/hooks/useCompiledMarkdown";
-import MyButton from "@/components/UI/MyButton.vue";
-import ContentBlock from "@/components/UI/ContentBlock.vue";
-import MyPost from "@/components/Post/MyPost.vue";
-import PageTitle from "@/components/UI/PageTitle.vue";
-import MyInput from "@/components/UI/MyInput.vue";
+import BaseButton from "@/components/UI/BaseButton.vue";
+import ContentBlock from "@/components/Content/ContentBlock.vue";
+import BasePost from "@/components/Content/Post/BasePost.vue";
+import BaseTitle from "@/components/Content/BaseTitle.vue";
+import BaseInput from "@/components/UI/BaseInput.vue";
 
 import Post from "@/models/PostModel";
-import Info from "@/models/InfoModel";
+import PostInfoColumnData from "@/models/PostInfoColumnModel";
 
 export default defineComponent({
   name: "EditForm",
   components: {
-    MyButton,
+    BaseButton,
     ContentBlock,
-    MyPost,
-    PageTitle,
-    MyInput
+    BasePost,
+    BaseTitle,
+    BaseInput
   },
   props: {
     post: {
@@ -34,14 +34,13 @@ export default defineComponent({
     const {postMarkdown, compiledMarkdown} = useCompiledMarkdown(props.post.text)
     const title = ref<String>(props.post.title)
     const isEditMode = ref<Boolean>(props.edit);
-    const post_info = ref<Info>({img: props.post.info.img, blocks: []});
+    const post_info = ref<PostInfoColumnData>({img: props.post.info.img, blocks: []});
     props.post.info.blocks.forEach(val => post_info.value.blocks.push(Object.assign({}, val)));
 
     function addRaw(){
-      post_info.value.blocks.push({title: "", value: ""})
+      post_info.value.blocks.push({title: "", text: ""})
     }
-    function removeRaw(event: any){
-      const index: number = parseInt(event.target.id.match(/\d+/))
+    function removeRaw(index: number){
       if (index > -1) {
         post_info.value.blocks.splice(index, 1)
       }
@@ -63,20 +62,24 @@ export default defineComponent({
   <div class="edit-form">
     <div v-if="isEditMode" class="edit-form-block">
       <div class="edit-post-block">
-        <page-title class="edit-post-title"><my-input v-model="title"></my-input></page-title>
+        <base-title class="edit-post-title"><base-input v-model="title"></base-input></base-title>
         <textarea v-model="postMarkdown"></textarea>
       </div>
       <div class="edit-info-block">
-        <div class="info-raw" v-for="(block, block_i) in post_info.blocks">
-          <div class="info-raw-title"><my-input v-model="block.title"></my-input></div>
-          <div class="info-raw-value"><my-input v-model="block.value"></my-input></div>
-          <button class="info-raw-remove" :id="`info-raw-${block_i}`" @click="removeRaw">X</button>
+        <div class="info-raw" v-for="(block, block_i) in post_info.blocks" :key="block_i">
+          <div class="info-raw-title">
+            <base-input v-model="block.title"></base-input>
+          </div>
+          <div class="info-raw-value">
+            <base-input v-model="block.text"></base-input>
+          </div>
+          <button class="info-raw-remove" @click="removeRaw(block_i)">X</button>
         </div>
-        <my-button class="info-raw-add" @click="addRaw">Добавить блок</my-button>
+        <base-button class="info-raw-add" @click="addRaw">Добавить блок</base-button>
       </div>
     </div>
     <div v-else class="preview-form-block">
-      <my-post
+      <base-post
           :id="$props.post.id"
           :post="{
             id: $props.post.id,
@@ -85,20 +88,21 @@ export default defineComponent({
             info: post_info
              }"
       >
-      </my-post>
+      </base-post>
     </div>
-    <my-button @click="isEditMode= !isEditMode">
+    <base-button @click="isEditMode= !isEditMode">
       режим ред {{isEditMode}}
-    </my-button>
+    </base-button>
 
     <div class="edit-btns">
-      <my-button @click="$emit('send', {
+      <base-button @click="$emit('send', {
             id: $props.post.id,
             title: title,
             text: postMarkdown,
             info: post_info
-             })">Внести изменения</my-button>
-      <my-button @click="$emit('cancel')">Отменить изменения</my-button>
+             })">Внести изменения
+      </base-button>
+      <base-button @click="$emit('cancel')">Отменить изменения</base-button>
     </div>
   </div>
 </template>

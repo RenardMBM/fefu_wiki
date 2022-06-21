@@ -1,12 +1,12 @@
 <script lang="ts">
 import {defineComponent, ref} from "vue";
-import EditPost from "@/components/Post/EditPost.vue";
-import MyPost from "@/components/Post/MyPost.vue";
+import EditPost from "@/components/Content/Post/EditPost.vue";
+import BasePost from "@/components/Content/Post/BasePost.vue";
 import {useRoute} from "vue-router";
 import getInstituteData from "@/hooks/getInstituteData";
 export default defineComponent({
   name: "InstituteView",
-  components: {EditPost, MyPost},
+  components: {EditPost, BasePost},
   setup(){
     const route = useRoute();
     const id = ref<number>(Number(route.params.id as string));
@@ -23,7 +23,7 @@ export default defineComponent({
 
 <template>
   <edit-post v-if="!isNaN(id)" :post="institute"></edit-post>
-  <my-post :id="id" :post="institute"></my-post>
+  <base-post :id="id" :post="institute"></base-post>
 </template>
 
 <style scoped>

@@ -10,11 +10,11 @@ export default function getTeacherData(teacher_id: number){
             blocks:[
                 {
                     title: "дата рождения",
-                    value: "12-01-2002"
+                    text: "12-01-2002"
                 },
                 {
                     title: "Ученая степень",
-                    value: "Доктор наук …"
+                    text: "Доктор наук …"
                 }
             ]
         },

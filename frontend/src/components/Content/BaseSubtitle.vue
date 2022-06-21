@@ -2,12 +2,12 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
-  name: "my-subtitle",
+  name: "BaseSubtitle",
 })
 </script>
 
 <template>
-  <div class="my-subtitle">
+  <div class="base-subtitle">
     <strong>
     <slot></slot>
     </strong>
@@ -15,7 +15,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.my-subtitle{
+.base-subtitle{
   //font-family: Verdana;
   font-size: 22px;
   width: 100%;

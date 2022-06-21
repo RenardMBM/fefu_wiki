@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent, PropType} from 'vue';
-import TeacherItem from "@/components/TeacherItem.vue";
-import ContentBlock from "@/components/UI/ContentBlock.vue";
-import PageTitle from "@/components/UI/PageTitle.vue";
-import MySubtitle from "@/components/UI/MySubtitle.vue";
+import TeacherItem from "@/components/Teacher/TeacherItem.vue";
+import ContentBlock from "@/components/Content/ContentBlock.vue";
+import BaseTitle from "@/components/Content/BaseTitle.vue";
+import BaseSubtitle from "@/components/Content/BaseSubtitle.vue";
 import Teacher from "@/models/TeacherItemModel";
 
 export default defineComponent({
@@ -11,8 +11,8 @@ export default defineComponent({
   components: {
     TeacherItem,
     ContentBlock,
-    PageTitle,
-    MySubtitle
+    BaseTitle,
+    BaseSubtitle
   },
   props: {
     title: {

@@ -1,8 +1,8 @@
 <script lang="ts">
 import {defineComponent, PropType, ref} from "vue";
-import MyButton from "@/components/UI/MyButton.vue";
-import MyDialog from "@/components/UI/MyDialog.vue";
-import EditForm from "@/components/Post/EditForm.vue";
+import BaseButton from "@/components/UI/BaseButton.vue";
+import BaseDialog from "@/components/UI/BaseDialog.vue";
+import EditForm from "@/components/Content/Post/EditForm.vue";
 import Post from "@/models/PostModel";
 import sendEditData from "@/hooks/sendEditData";
 import router from "@/router";
@@ -11,8 +11,8 @@ import store from "@/store";
 export default defineComponent({
   name: "EditPost",
   components: {
-    MyButton,
-    MyDialog,
+    BaseButton,
+    BaseDialog,
     EditForm
   },
   props:{
@@ -49,12 +49,12 @@ export default defineComponent({
 
 <template>
   <div v-if="permission > 1" class="edit-block">
-    <my-button @click="editDialogVisible=true">Edit</my-button>
-    <my-dialog v-model:show="editDialogVisible">
+    <base-button @click="editDialogVisible=true">Edit</base-button>
+    <base-dialog v-model:show="editDialogVisible">
       <edit-form :post="$props.post"
                  @send="sendEdit" @cancel="cancelEdit"
       />
-    </my-dialog>
+    </base-dialog>
   </div>
 </template>
 

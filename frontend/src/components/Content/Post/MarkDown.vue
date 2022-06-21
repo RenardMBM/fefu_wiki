@@ -1,14 +1,14 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import useCompiledMarkdown from "@/hooks/useCompiledMarkdown";
-import MyDialog from "@/components/UI/MyDialog.vue";
-import MyButton from "@/components/UI/MyButton.vue";
+import BaseDialog from "@/components/UI/BaseDialog.vue";
+import BaseButton from "@/components/UI/BaseButton.vue";
 
 export default defineComponent({
   name: "MarkDown",
   components: {
-    MyButton,
-    MyDialog,
+    BaseButton,
+    BaseDialog,
   },
   props:{
     text: {

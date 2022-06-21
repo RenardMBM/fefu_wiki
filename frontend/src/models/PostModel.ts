@@ -1,7 +1,7 @@
-import Info from "@/models/InfoModel";
+import PostInfoColumnData from "@/models/PostInfoColumnModel";
 export default interface Post {
     id: number,
     title : string,
-    info: Info
+    info: PostInfoColumnData
     text: string
 }

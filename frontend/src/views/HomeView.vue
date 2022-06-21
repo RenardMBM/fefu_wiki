@@ -1,16 +1,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PageTitle from "@/components/UI/PageTitle.vue";
-import MySubtitle from "@/components/UI/MySubtitle.vue";
-import TopTeachers from "@/components/TopTeachers.vue";
-import InstitutesList from "@/components/InstitutesList.vue";
+import BaseTitle from "@/components/Content/BaseTitle.vue";
+import BaseSubtitle from "@/components/Content/BaseSubtitle.vue";
+import TopTeachers from "@/components/Teacher/TopTeachers.vue";
+import InstitutesList from "@/components/Institute/InstitutesList.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
     InstitutesList,
-    PageTitle,
-    MySubtitle,
+    BaseTitle,
+    BaseSubtitle,
     TopTeachers
   },
   data(){
@@ -63,14 +63,14 @@ export default defineComponent({
 
 <template>
   <div class="home">
-    <page-title>Добро пожаловать на ДВФУ Вики: сайт о преподавателях ДВФУ и не только!</page-title>
+    <base-title>Добро пожаловать на ДВФУ Вики: сайт о преподавателях ДВФУ и не только!</base-title>
   </div>
   <div class="institutes-block">
-    <my-subtitle>Институты и школы</my-subtitle>
+    <base-subtitle>Институты и школы</base-subtitle>
     <institutes-list></institutes-list>
   </div>
   <div class="top-block">
-    <my-subtitle>Топ преподавателей</my-subtitle>
+    <base-subtitle>Топ преподавателей</base-subtitle>
     <div class="top-list">
       <top-teachers v-for="top in tops"
                  :title="top.title" :teachers="top.teachers"></top-teachers>

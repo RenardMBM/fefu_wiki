@@ -1,8 +1,8 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
-import ContentBlock from "@/components/UI/ContentBlock.vue";
-import InstituteItem from "@/components/InstituteItem.vue";
+import ContentBlock from "@/components/Content/ContentBlock.vue";
+import InstituteItem from "@/components/Institute/InstituteItem.vue";
 import getInstitutes from "@/hooks/getInstitutes"
 
 export default defineComponent({

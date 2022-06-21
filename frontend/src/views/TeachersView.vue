@@ -1,16 +1,16 @@
 <script lang="ts">
 import {defineComponent} from "vue"
-import PageTitle from "@/components/UI/PageTitle.vue";
+import BaseTitle from "@/components/Content/BaseTitle.vue";
 export default defineComponent({
   name: "TeachersView",
   components: {
-    PageTitle,
+    BaseTitle,
   }
 })
 </script>
 
 <template>
-<page-title>Преподаватели Лучшего университета</page-title>
+<base-title>Преподаватели Лучшего университета</base-title>
 </template>
 
 <style scoped>

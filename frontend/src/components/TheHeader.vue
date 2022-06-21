@@ -1,18 +1,20 @@
 <script lang="ts">
-import {defineComponent} from "vue"
-import MyButton from "@/components/UI/MyButton.vue";
-import MyInput from "@/components/UI/MyInput.vue";
+import {defineComponent, ref} from "vue"
+import BaseButton from "@/components/UI/BaseButton.vue";
+import BaseInput from "@/components/UI/BaseInput.vue";
 import store from "@/store"
 
 export default defineComponent({
-  name: "my-header",
+  name: "TheHeader",
   components: {
-    MyInput,
-    MyButton,
+    BaseInput,
+    BaseButton,
   },
-  data() {
+  setup(){
+    const searchQuery = ref('')
+
     return {
-      searchQuery: '',
+      searchQuery
     }
   },
   computed: {
@@ -36,14 +38,14 @@ export default defineComponent({
           <i class="bi bi-person-circle"></i>&nbsp;
           <div>{{accountName}}</div>
         </div>
-        <my-button>Войти</my-button>
+        <base-button>Войти</base-button>
       </div>
       <div class="search-block">
-        <my-input class="search-input"
+        <base-input class="search-input"
           v-model="searchQuery"
           placeholder="Поиск...."
         />
-        <button class="icon"><i class="bi bi-search"></i></button>
+        <button @click="" class="icon"><i class="bi bi-search"></i></button>
       </div>
     </div>
   </div>

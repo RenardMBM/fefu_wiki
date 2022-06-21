@@ -1,18 +1,19 @@
 <template>
-  <my-header></my-header>
-  <navbar></navbar>
+  <the-header></the-header>
+  <the-navbar></the-navbar>
   <div class="app">
     <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
-import Navbar from "@/components/Navbar.vue";
-import MyHeader from "@/components/Header.vue";
+import TheNavbar from "@/components/TheNavbar.vue";
+import TheHeader from "@/components/TheHeader.vue";
+
 import {defineComponent} from "vue"
 
 export default defineComponent({
-  components: {MyHeader, Navbar}
+  components: {TheHeader, TheNavbar}
 })
 </script>
 
