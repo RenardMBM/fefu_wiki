@@ -4,7 +4,7 @@ import TeacherItem from "@/components/Teacher/TeacherItem.vue";
 import ContentBlock from "@/components/Content/ContentBlock.vue";
 import BaseTitle from "@/components/Content/BaseTitle.vue";
 import BaseSubtitle from "@/components/Content/BaseSubtitle.vue";
-import Teacher from "@/models/TeacherItemModel";
+import ShortPost from "@/models/ShortPostModel";
 
 export default defineComponent({
   name: "TopTeachers",
@@ -20,7 +20,7 @@ export default defineComponent({
       required: true,
     },
     teachers: {
-      type: Array as PropType<Array<Teacher>>,
+      type: Array as PropType<Array<ShortPost>>,
       required: true,
     }
   }

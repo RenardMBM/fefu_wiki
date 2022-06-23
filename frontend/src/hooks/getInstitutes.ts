@@ -1,8 +1,8 @@
 import axios from "axios";
 import {ref, onMounted} from 'vue';
-import Institute from "@/models/InstituteItemModel";
+import ShortPost from "@/models/ShortPostModel";
 export default function getInstitutes(){
-    const institutes = ref(Array<Institute>());
+    const institutes = ref(Array<ShortPost>());
 
     const fetching = async () => {
         try {
@@ -13,10 +13,12 @@ export default function getInstitutes(){
                 {
                     id: 0,
                     title : "Институт математики и компьютерных технологий",
+                    blocks: []
                 },
                 {
                     id: 1,
                     title : "Политехнический институт",
+                    blocks: []
                 }
             ]
             // alert('Ошибка')

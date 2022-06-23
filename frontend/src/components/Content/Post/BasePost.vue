@@ -33,7 +33,7 @@ export default defineComponent({
 
 <template>
   <error-view v-if="isNaN(id)"></error-view>
-  <div v-else class="base-post">
+  <div v-else class="short-post">
     <div class="post-main-content">
       <base-title class="post-title">{{ post.title }}</base-title>
       <content-block>
@@ -45,7 +45,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.base-post{
+.short-post{
   display: flex;
   flex-wrap: wrap-reverse;
 }

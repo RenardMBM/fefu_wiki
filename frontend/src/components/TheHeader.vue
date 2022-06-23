@@ -2,6 +2,7 @@
 import {defineComponent, ref} from "vue"
 import BaseButton from "@/components/UI/BaseButton.vue";
 import BaseInput from "@/components/UI/BaseInput.vue";
+import SearchPostLine from "@/components/SearchPostLine.vue";
 import store from "@/store"
 
 export default defineComponent({
@@ -9,13 +10,7 @@ export default defineComponent({
   components: {
     BaseInput,
     BaseButton,
-  },
-  setup(){
-    const searchQuery = ref('')
-
-    return {
-      searchQuery
-    }
+    SearchPostLine
   },
   computed: {
     accountName(){
@@ -40,13 +35,7 @@ export default defineComponent({
         </div>
         <base-button>Войти</base-button>
       </div>
-      <div class="search-block">
-        <base-input class="search-input"
-          v-model="searchQuery"
-          placeholder="Поиск...."
-        />
-        <button @click="" class="icon"><i class="bi bi-search"></i></button>
-      </div>
+      <search-post-line/>
     </div>
   </div>
 </template>
@@ -89,25 +78,5 @@ export default defineComponent({
   height: 20px;
   width: 20px;
   margin-right: 0.2em;
-}
-.search-block{
-  display: flex;
-  margin-top: 0.5em;
-  justify-content: flex-end
-}
-.search-block .search-input{
-  margin-right: 0.5em;
-}
-.search-block .icon{
-  cursor: pointer;
-  background: none;
-  position: absolute;
-  top: 50%;
-  margin-right: 18px;
-  margin-top: 13px;
-  z-index: 1;
-}
-.search-block .icon:active{
-  transform: translateY(1px);
 }
 </style>

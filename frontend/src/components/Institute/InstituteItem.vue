@@ -1,6 +1,6 @@
 <script lang="ts">
 import ContentBlock from "@/components/Content/ContentBlock.vue";
-import InstituteItem from "@/models/InstituteItemModel";
+import ShortPost from "@/models/ShortPostModel";
 import {defineComponent, PropType} from "vue";
 
 export default defineComponent({
@@ -10,7 +10,7 @@ export default defineComponent({
   },
   props: {
     institute: {
-      type: Object as PropType<InstituteItem>,
+      type: Object as PropType<ShortPost>,
       required: true,
     }
   }
@@ -22,6 +22,8 @@ export default defineComponent({
        @click="$router.push(`/institute/${institute.id}`)"
   >
     <div>{{ institute.title }}</div>
+    <div v-for="block in institute.blocks">{{ block.title }}: {{ block.content }}</div>
+
   </div>
 </template>
 

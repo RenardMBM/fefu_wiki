@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import InstitutesView from "@/views/InstitutesView.vue";
+import InstitutesView from "@/views/InstitutesView.vue"
 import InstituteView from "@/views/InstituteView.vue"
-import TeachersView from "@/views/TeachersView.vue";
+import TeachersView from "@/views/TeachersView.vue"
 import TeacherView from "@/views/TeacherView.vue"
+import SearchView from "@/views/SearchView.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'institute',
     component: InstituteView
   },
+  {
+    path: '/search/:searchQuery',
+    name: 'search',
+    component: SearchView
+  }
 ]
 
 const router = createRouter({

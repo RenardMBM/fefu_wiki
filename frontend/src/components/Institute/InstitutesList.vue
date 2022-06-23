@@ -22,8 +22,7 @@ export default defineComponent({
 
 <template>
   <content-block class="institutes-block">
-    <institute-item v-for="institute in institutes" :institute="institute">
-    </institute-item>
+    <institute-item v-for="institute in institutes" :institute="institute"/>
   </content-block>
 </template>
 
