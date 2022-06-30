@@ -40,7 +40,7 @@ export default defineComponent({
   },
   computed: {
     permission() {
-      return store.state.user.permission
+      return (store.getters.isAuth && store.state.user.permission > 1);
     }
   },
 })
@@ -48,7 +48,7 @@ export default defineComponent({
 
 
 <template>
-  <div v-if="permission > 1" class="edit-block">
+  <div v-if="permission" class="edit-block">
     <base-button @click="editDialogVisible=true">Edit</base-button>
     <base-dialog v-model:show="editDialogVisible">
       <edit-form :post="$props.post"

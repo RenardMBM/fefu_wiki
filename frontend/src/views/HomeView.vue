@@ -1,9 +1,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import BaseTitle from "@/components/Content/BaseTitle.vue";
 import BaseSubtitle from "@/components/Content/BaseSubtitle.vue";
 import TopTeachers from "@/components/Teacher/TopTeachers.vue";
 import InstitutesList from "@/components/Institute/InstitutesList.vue";
+
+import getTopsPosts from "@/hooks/requests/tops/getTopsPosts";
 
 export default defineComponent({
   name: "HomeView",
@@ -13,49 +16,10 @@ export default defineComponent({
     BaseSubtitle,
     TopTeachers
   },
-  data(){
+  setup(){
+    const {tops} = getTopsPosts([0, 1, 2]);
     return{
-      tops:[
-        {
-          title: "Ближайшие дни рожедения",
-          teachers: [
-            {
-              id: 0,
-              title: "Селезнев Тим Эдуардович",
-              subtitle: "Дата рождения",
-              value: "10.01.2002"
-            },
-            {
-              id: 1,
-              title: "Cущенко Андрей Андреевич",
-              subtitle: "Дата рождения",
-              value: "10.01.2002"
-            }
-          ]
-        },
-        {
-          title: "Самые халявные",
-          teachers: [
-            {
-              id: 0,
-              title: "Селезнев Тим Эдуардович",
-              subtitle: "Халявность",
-              value: "4.5"
-            }
-          ]
-        },
-        {
-          title: "Самые строгие",
-          teachers: [
-            {
-              id: 1,
-              title: "Cущенко Андрей Андреевич",
-              subtitle: "Халявность",
-              value: "4"
-            }
-          ]
-        },
-      ],
+      tops
     }
   }
 })
@@ -73,7 +37,7 @@ export default defineComponent({
     <base-subtitle>Топ преподавателей</base-subtitle>
     <div class="top-list">
       <top-teachers v-for="top in tops"
-                 :title="top.title" :teachers="top.teachers"></top-teachers>
+                 :title="top.title" :teachers="top.posts"></top-teachers>
     </div>
   </div>
 </template>
