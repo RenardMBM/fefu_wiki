@@ -5,6 +5,7 @@ import BaseButton from "@/components/UI/BaseButton.vue";
 import CommentItem from "@/components/Content/comments/CommentItem.vue";
 import BaseTitle from "@/components/Content/BaseTitle.vue";
 import ContentBlock from "@/components/Content/ContentBlock.vue";
+import BaseAreaInput from "@/components/UI/BaseAreaInput.vue";
 
 
 interface Dictionary<T> {
@@ -14,7 +15,7 @@ interface Dictionary<T> {
 
 export default defineComponent({
   name: "CommentsBlock",
-  components: {BaseButton, CommentItem, BaseTitle, ContentBlock},
+  components: {BaseAreaInput, BaseButton, CommentItem, BaseTitle, ContentBlock},
   props: {
     title: {
       type: String,
@@ -23,6 +24,10 @@ export default defineComponent({
     comments: {
       type: Array as PropType<Array<CommentData>>,
       required: true,
+    },
+    newComm: {
+      type: String,
+      default: "",
     }
   },
   methods: {
@@ -38,10 +43,16 @@ export default defineComponent({
       }
     }
   },
-  setup() {
+  setup(props, {emit}) {
     const dict = ref<Dictionary<number>>({});
     const usersCount = ref<number>(1);
-    return {dict, usersCount};
+
+    const CommQuery = ref(props.newComm)
+    function onAddComm() {
+      emit('addComment', CommQuery.value);
+    }
+
+    return {dict, usersCount, CommQuery, onAddComm};
   }
 });
 </script>
@@ -49,7 +60,10 @@ export default defineComponent({
 <template>
   <div class="commentBlock">
     <BaseTitle class="comment-title"> {{title}} </BaseTitle>
-    <base-button class="btn">Оставить коментарий</base-button>
+    <base-button class="btn" @click="onAddComm">Оставить коментарий</base-button>
+    <base-area-input class="areaInp" v-model="CommQuery">
+
+    </base-area-input>
     <div class="comment-list" v-if="comments.length > 0">
       <comment-item class="comment-item"
                     v-for="comment in comments"
@@ -70,5 +84,9 @@ export default defineComponent({
 }
 .btn {
   margin: 10px;
+}
+.areaInp {
+  margin-left: 10px;
+  height: 100px;
 }
 </style>
