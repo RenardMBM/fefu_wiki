@@ -18,9 +18,17 @@ export default defineComponent({
       required: true,
     }
   },
-  setup(props) {
+  setup(props, {emit}) {
     const imgNum = ref<number>(props.comment.userId ? props.comment.userId % 6 + 1 : 0)
-    return {imgNum};
+    function onDislike(){
+      props.comment.voted = -1;
+      emit('updateComm', props.comment);
+    }
+    function onLike(){
+      props.comment.voted = 1;
+      emit('updateComm', props.comment);
+    }
+    return {imgNum, onDislike, onLike};
   }
 });
 </script>
@@ -34,11 +42,11 @@ export default defineComponent({
       <div class="date">{{comment.date.toLocaleDateString()}}</div>
       </div>
       <div style="display: flex">
-        <button class="btn-icon">
+        <button class="btn-icon" @click="onLike">
           <i v-if="comment.voted !== 1" class="bi bi-hand-thumbs-up"></i>
           <i v-else class="bi bi-hand-thumbs-up-fill"></i></button>
         <div class="likes">{{comment.likes}}</div>
-        <button class="btn-icon">
+        <button class="btn-icon" @click="onDislike">
           <i v-if="comment.voted !== -1" class="bi bi-hand-thumbs-down"></i>
           <i v-else class="bi bi-hand-thumbs-down-fill"></i></button>
         <div class="likes">{{comment.dislikes}}</div>

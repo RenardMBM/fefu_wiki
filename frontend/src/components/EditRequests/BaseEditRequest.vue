@@ -63,16 +63,16 @@ export default defineComponent({
 </script>
 
 <template>
-  <base-button @click="changeVersion">Меняем версию</base-button>
+  <base-button @click="changeVersion" style="margin-bottom: 10px">{{ !isModifiedVisible ? "Старая версия" : "Новая версия" }}</base-button>
   <base-post v-if="isModifiedVisible" :id="modifiedPost.id" :post="modifiedPost"></base-post>
   <base-post v-else :id="post.id" :post="post"></base-post>
 
-  <base-button @click="acceptModification">Принять</base-button>
-  <base-button @click="cancelDialog=true">Отклонить</base-button>
+  <base-button @click="acceptModification" style="margin: 6px">Принять</base-button>
+  <base-button @click="cancelDialog=true" style="margin: 6px">Отклонить</base-button>
   <base-dialog v-model:show="cancelDialog">
-    <base-title>Причина отказа:</base-title>
-    <base-area-input :v-model="reason"></base-area-input>
-    <base-button @click="sendReason">Отправить</base-button>
+    <base-title style="border-bottom: none">Причина отказа:</base-title>
+    <base-area-input :v-model="reason" style="height: 100px; width: 300px"></base-area-input>
+    <base-button @click="sendReason" style="margin-top: 10px">Отправить</base-button>
   </base-dialog>
 </template>
 

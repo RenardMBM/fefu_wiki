@@ -48,8 +48,8 @@ export default defineComponent({
 
 
 <template>
-  <div v-if="permission" class="edit-block">
-    <base-button @click="editDialogVisible=true">Edit</base-button>
+  <div v-if="permission" class="edit-block" style="margin-bottom: 10px">
+    <base-button @click="editDialogVisible=true">Изменить</base-button>
     <base-dialog v-model:show="editDialogVisible">
       <edit-form :post="$props.post"
                  @send="sendEdit" @cancel="cancelEdit"

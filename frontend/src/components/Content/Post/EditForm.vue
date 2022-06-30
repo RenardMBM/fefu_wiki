@@ -9,10 +9,12 @@ import BaseInput from "@/components/UI/BaseInput.vue";
 
 import Post from "@/models/PostModel";
 import PostInfoColumnData from "@/models/PostInfoColumnModel";
+import BaseAreaInput from "@/components/UI/BaseAreaInput.vue";
 
 export default defineComponent({
   name: "EditForm",
   components: {
+    BaseAreaInput,
     BaseButton,
     ContentBlock,
     BasePost,
@@ -51,13 +53,13 @@ export default defineComponent({
   <div class="edit-form">
     <div v-if="isEditMode" class="edit-form-block">
       <div class="edit-post-block">
-        <base-title class="edit-post-title"><base-input v-model="title"></base-input></base-title>
-        <textarea v-model="postMarkdown"></textarea>
+        <h1 class="edit-post-title" style="text-align: center">{{title}}</h1>
+        <base-area-input v-model="postMarkdown" style="height: 75px"></base-area-input>
       </div>
       <div class="edit-info-block">
         <div class="info-raw" v-for="(block, block_i) in post_info.blocks" :key="block_i">
           <div class="info-raw-title">
-            <content-block>{{block.title}}</content-block>
+            <div style="margin: 15px 10px 2px 0">{{block.title}}</div>
           </div>
           <div class="info-raw-value">
             <base-input v-model="block.text"></base-input>
@@ -77,19 +79,16 @@ export default defineComponent({
       >
       </base-post>
     </div>
-    <base-button @click="isEditMode= !isEditMode">
-      режим ред {{isEditMode}}
-    </base-button>
-
+    <button class="btn-icon" @click="isEditMode= !isEditMode"><i class="bi bi-search"></i></button>
     <div class="edit-btns">
       <base-button @click="$emit('send', {
             id: $props.post.id,
             title: title,
             text: postMarkdown,
             info: post_info
-             })">Внести изменения
+             })" style="width: 50%; margin-right: 5px">Внести изменения
       </base-button>
-      <base-button @click="$emit('cancel')">Отменить изменения</base-button>
+      <base-button @click="$emit('cancel')" style="width: 50%; margin-left: 5px" >Отменить изменения</base-button>
     </div>
   </div>
 </template>
@@ -102,5 +101,11 @@ export default defineComponent({
 }
 .edit-btns{
   display: flex;
+}
+.btn-icon {
+  margin: 5px 5px 0 calc(50% - 18px);
+  background: none;
+  width: 30px;
+  height: 30px;
 }
 </style>

@@ -52,6 +52,15 @@ export default defineComponent({
   width: 100%;
   font-size: 80%;
 }
+.navbar__moder_btns {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*width: 9em;*/
+  width: 100%;
+}
 
 .logo{
   width: 100%;
