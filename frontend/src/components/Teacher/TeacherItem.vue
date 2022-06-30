@@ -22,11 +22,12 @@ export default defineComponent({
 
 <style scoped>
 .short-post {
+  margin: 6px 0 6px 0;
   padding: 15px;
   line-height: 20px;
   border: 1px solid teal;
   border-radius: 10px;
-  background-color: #EBEEEF;
+  background-color: #d9dcff;
   /*margin-top: 15px;*/
   display: flex;
   align-items: flex-start;
@@ -35,11 +36,11 @@ export default defineComponent({
   cursor: pointer;
 }
 .short-post:hover {
-  background-color: #DBDEDF;
+  background-color: #c3c6e5;
   transition-duration: 0.3s;
 }
 .short-post:active {
-  background-color: #CBCECF;
+  background-color: #afb2ce;
   transform: translateY(1px);
 }
 </style>

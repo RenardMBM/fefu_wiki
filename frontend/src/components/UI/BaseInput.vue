@@ -2,19 +2,30 @@
 import {defineComponent} from "vue"
 export default defineComponent({
   name: 'BaseInput',
+  emits:[
+    "enter",
+    "update:modelValue"
+  ],
   props: {
     modelValue: String
   },
-  methods: {
-    updateInput(event: any) {
-      this.$emit('update:modelValue', event.target.value)
+  setup(props, {emit}){
+    function onEnter() {
+      emit('enter')
+    }
+    function updateInput(event: any) {
+      emit('update:modelValue', event.target.value)
+    }
+    return{
+      onEnter,
+      updateInput
     }
   }
 })
 </script>
 
 <template>
-  <input :value="modelValue" @input="updateInput" class="input" type="text">
+  <input :value="modelValue" @input="updateInput" class="input" type="text" @keyup.enter="onEnter">
 </template>
 
 <style scoped>
@@ -22,8 +33,7 @@ export default defineComponent({
   display: block;
   width: 100%;
   height: calc(2.25rem + 2px);
-  padding: 0.375rem 0.75rem;
-  padding-right: 33px;
+  padding: 0.375rem 33px 0.375rem 0.75rem;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 400;

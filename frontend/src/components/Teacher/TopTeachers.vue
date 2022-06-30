@@ -59,6 +59,5 @@ export default defineComponent({
   /*padding: 1em;*/
 }
 .top-list-item{
-  margin-bottom: 0.5em;
 }
 </style>

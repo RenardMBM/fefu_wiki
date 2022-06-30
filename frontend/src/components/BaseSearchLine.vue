@@ -19,7 +19,7 @@ export default defineComponent({
   setup(props, {emit}) {
     const searchQuery = ref(props.content)
     function onSearch() {
-      emit('search', searchQuery.value)
+      emit('search', searchQuery.value);
     }
     return {
       searchQuery,
@@ -33,7 +33,7 @@ export default defineComponent({
   <div class="search-block">
     <base-input class="search-input"
                 v-model="searchQuery"
-                placeholder="Поиск...."
+                placeholder="Поиск...." @enter="onSearch"
     />
     <button @click="onSearch" class="icon"><i class="bi bi-search"></i></button>
   </div>
@@ -51,10 +51,9 @@ export default defineComponent({
 .search-block .icon{
   cursor: pointer;
   background: none;
+  margin: 10px 20px 0 0;
+  font-size: 18px;
   position: absolute;
-  top: 50%;
-  margin-right: 18px;
-  margin-top: 13px;
   z-index: 1;
 }
 .search-block .icon:active{

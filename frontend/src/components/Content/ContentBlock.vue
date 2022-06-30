@@ -14,7 +14,7 @@ export default defineComponent({
 <style scoped>
 .content-block{
   background-color: #EBEEFF;
-  border-radius: 30px;
+  border-radius: 15px;
   width: 100%;
   padding: 1em;
   margin: 0.5em;
