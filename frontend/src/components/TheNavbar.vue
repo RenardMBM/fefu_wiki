@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 import {defineComponent} from "vue";
 import store from "@/store"
-import BaseNavbar from "@/components/BaseNavbar";
-import TheMobileNavbar from "@/components/TheMobileNavbar";
+import BaseNavbar from "@/components/BaseNavbar.vue";
+import TheMobileNavbar from "@/components/TheMobileNavbar.vue";
 export default defineComponent({
   name: "TheNavbar",
   components: {

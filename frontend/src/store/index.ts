@@ -23,8 +23,8 @@ export default createStore<State>({
       state.user.permission = data.permission;
       state.user.account = data.account;
     },
-    mobileFormat(state:State, isMobile: boolean){
-      state.format.isMobile = isMobile;
+    mobileFormat(state:State, payload){
+      state.format.isMobile = payload.isMobile;
     }
   }
 })

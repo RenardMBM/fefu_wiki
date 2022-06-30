@@ -4,7 +4,7 @@ import BaseButton from "@/components/UI/BaseButton.vue";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import EditForm from "@/components/Content/Post/EditForm.vue";
 import Post from "@/models/PostModel";
-import sendEditData from "@/hooks/sendEditData";
+import sendEditData from "@/hooks/requests/sendEditData";
 import router from "@/router";
 import store from "@/store";
 

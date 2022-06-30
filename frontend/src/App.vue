@@ -4,16 +4,18 @@
   <div class="app">
     <router-view :key="$route.path"></router-view>
   </div>
+  <screen-size></screen-size>
 </template>
 
 <script lang="ts">
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheHeader from "@/components/TheHeader.vue";
+import ScreenSize from "@/components/UILogics/ScreenSize.vue";
 
 import {defineComponent} from "vue"
 
 export default defineComponent({
-  components: {TheHeader, TheNavbar}
+  components: {TheHeader, TheNavbar, ScreenSize}
 })
 </script>
 

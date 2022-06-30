@@ -1,7 +1,7 @@
 <script lang="ts">
 import {defineComponent, ref} from "vue";
 import { useRoute } from 'vue-router'
-import getTeacherData from "@/hooks/getTeacherData";
+import getTeacherData from "@/hooks/requests/getTeacherData";
 import BasePost from "@/components/Content/Post/BasePost.vue";
 import EditPost from "@/components/Content/Post/EditPost.vue";
 

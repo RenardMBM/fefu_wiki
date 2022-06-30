@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import BaseTitle from "@/components/Content/BaseTitle.vue";
 import SearchPostLine from "@/components/SearchPostLine.vue";
 import TeachersList from "@/components/Teacher/TeachersList.vue";
-import searchPost from "@/hooks/seacrhPost"
+import searchPost from "@/hooks/requests/seacrhPost"
 
 export default defineComponent({
   name: "SearchView",
