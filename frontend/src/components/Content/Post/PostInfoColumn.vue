@@ -31,6 +31,7 @@ export default defineComponent({
   flex-direction: column;
   width: 300px;
   background-color: #F5F5F5;
+  height: fit-content;
 }
 .info-img-block{
   width: 100%;

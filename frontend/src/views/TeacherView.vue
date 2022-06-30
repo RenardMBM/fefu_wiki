@@ -15,11 +15,11 @@ export default defineComponent({
     const id = ref<number>(Number(route.params.id as string));
 
     const commTitle = ref<String>("Комментарии");
-    const comments = ref<Array<CommentData>>([{userId: 1202, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 },
-      {userId: 123, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 },
-      {userId: 11, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 },
+    const comments = ref<Array<CommentData>>([{userId: 1202, date: new Date("01-03-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 },
+      {userId: 123, date: new Date("2003-02-03"), text: "2003-01-01", dislikes: 0, likes: 1, voted: 0 },
+      {userId: 11, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 1 },
       {userId: 1202, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 },
-      {userId: null, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 }])
+      {userId: null, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: -1 }])
 
     if (id) {
       const {teacher} = getTeacherData(id.value);
