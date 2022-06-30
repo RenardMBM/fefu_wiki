@@ -25,7 +25,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <textarea :value="modelValue" @input="updateInput" class="input" @keyup.enter="onEnter" placeholder="Введите текст"></textarea>
+  <textarea :value="modelValue" @input="updateInput" class="input" placeholder="Введите текст"></textarea>
 </template>
 
 <style scoped>

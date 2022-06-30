@@ -3,7 +3,7 @@
 import {defineComponent} from "vue"
 import ContentBlock from "@/components/Content/ContentBlock.vue";
 import InstituteItem from "@/components/Institute/InstituteItem.vue";
-import getInstitutes from "@/hooks/requests/getInstitutes"
+import getInstitutes from "@/hooks/requests/institutes/getInstitutes"
 
 export default defineComponent({
   name: "InstitutesList",

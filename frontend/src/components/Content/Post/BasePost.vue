@@ -32,7 +32,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <error-view v-if="isNaN(id)"></error-view>
+  <error-view v-if="isNaN(id) || post === undefined"></error-view>
   <div v-else class="short-post">
     <div class="post-main-content">
       <base-title class="post-title">{{ post.title }}</base-title>

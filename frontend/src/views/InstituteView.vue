@@ -3,7 +3,7 @@ import {defineComponent, ref} from "vue";
 import EditPost from "@/components/Content/Post/EditPost.vue";
 import BasePost from "@/components/Content/Post/BasePost.vue";
 import {useRoute} from "vue-router";
-import getInstituteData from "@/hooks/requests/getInstituteData";
+import getInstituteData from "@/hooks/requests/institutes/getInstituteData";
 export default defineComponent({
   name: "InstituteView",
   components: {EditPost, BasePost},

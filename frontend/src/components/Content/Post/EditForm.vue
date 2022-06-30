@@ -36,23 +36,12 @@ export default defineComponent({
     const isEditMode = ref<Boolean>(props.edit);
     const post_info = ref<PostInfoColumnData>({img: props.post.info.img, blocks: []});
     props.post.info.blocks.forEach(val => post_info.value.blocks.push(Object.assign({}, val)));
-
-    function addRaw(){
-      post_info.value.blocks.push({title: "", text: ""})
-    }
-    function removeRaw(index: number){
-      if (index > -1) {
-        post_info.value.blocks.splice(index, 1)
-      }
-    }
     return {
       postMarkdown,
       compiledMarkdown,
       isEditMode,
       title,
       post_info,
-      addRaw,
-      removeRaw
     }
   }
 })
@@ -68,14 +57,12 @@ export default defineComponent({
       <div class="edit-info-block">
         <div class="info-raw" v-for="(block, block_i) in post_info.blocks" :key="block_i">
           <div class="info-raw-title">
-            <base-input v-model="block.title"></base-input>
+            <content-block>{{block.title}}</content-block>
           </div>
           <div class="info-raw-value">
             <base-input v-model="block.text"></base-input>
           </div>
-          <button class="info-raw-remove" @click="removeRaw(block_i)">X</button>
         </div>
-        <base-button class="info-raw-add" @click="addRaw">Добавить блок</base-button>
       </div>
     </div>
     <div v-else class="preview-form-block">

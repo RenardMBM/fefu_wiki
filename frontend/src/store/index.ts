@@ -11,8 +11,8 @@ export interface State {
 export default createStore<State>({
   state: {
     user: {
-      isAuth: false,
-      permission:2,
+      isAuth: true, //TODO: =false
+      permission:2, //TODO: =1
       account:""
     },
     format: {
