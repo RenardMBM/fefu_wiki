@@ -10,3 +10,30 @@ services:
             POSTGRES_DB: dbName
             POSTGRES_USER: dbUser
             POSTGRES_PASSWORD: dbPassword
+
+    backend:
+        container_name: backend
+        build:
+            context: ../.
+            dockerfile: ./.docker/Dockerfile
+        image: backend:latest
+        command: "sh /www/.docker/backend.sh"
+        volumes:
+            - "../.:/www"
+        working_dir: /www
+        depends_on:
+            - database
+        environment:
+            PYTHONUNBUFFERED: 1
+            POSTGRES_DB: dbName
+            POSTGRES_USER: dbUser
+            POSTGRES_PASSWORD: dbPassword
+            DJANGO_SETTINGS_MODULE: fefu_wiki:settings
+        ports:
+            - "8000:8000"
+
+    redis:
+        container_name: redis
+        image: redis:5.0.14
+        ports:
+            - "6379:6379"

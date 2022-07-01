@@ -17,6 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'rest_framework',
+    'account',
+    'article',
+    'comment'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +61,7 @@ DATABASES = {
         'NAME': getenv('DATABASE_NAME'),
         'USER': getenv('POSTGRES_USER'),
         'PASSWORD': getenv('POSTGRES_PASSWORD'),
-        'HOST': 'database',
+        'HOST': 'localhost',
         'PORT': getenv('DATABASE_PORT', '5432'),
     }
 }
@@ -79,6 +82,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+AUTH_USER_MODEL = 'account.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -92,12 +96,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Media files
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = 'media'
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # DRF
 
-REST_FRAMEWORK = dict(
-    DEFAULT_PERMISSION_CLASSES=['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
-)
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

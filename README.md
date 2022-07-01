@@ -1,10 +1,10 @@
-# fefu_wiki
+# fefu_wk
 
 ## Requirements
 ___
 ### Backend
 * Docker
-* Python 3
+* Python 3.9
 
 ## Run
 ___
@@ -15,9 +15,9 @@ ___
     ```
 2) Set environment variables
     ```
-   DATABASE_NAME = dbName
-   POSTGRES_USER = dbUser
-   POSTGRES_PASSWORD = dbPassword
+   DATABASE_NAME=dbName
+   POSTGRES_USER=dbUser
+   POSTGRES_PASSWORD=dbPassword
    ```
 3) Run backend server
     ``` shell
