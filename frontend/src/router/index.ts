@@ -7,6 +7,7 @@ import TeacherView from "@/views/TeacherView.vue"
 import SearchView from "@/views/SearchView.vue"
 import EditRequestInstituteView from "@/views/EditRequestInstituteView.vue";
 
+import EditRequestsView from "@/views/EditRequestsView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -42,6 +43,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/editRequests/institute/:requestId',
     name: 'editRequestsInstitute',
     component: EditRequestInstituteView
+  },
+  {
+    path: '/editRequests',
+    name: 'editRequests',
+    component: EditRequestsView
   }
 ]
 

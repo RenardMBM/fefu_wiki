@@ -1,6 +1,7 @@
 import axios from "axios";
 import {ref, onMounted} from 'vue';
 import Post from "@/models/PostModel";
+
 export default function getTeacherData(teacher_id: number){
     const teacher = ref<Post>({
         id: teacher_id,
@@ -21,11 +22,11 @@ export default function getTeacherData(teacher_id: number){
         text: "Какая-то информацие о преподавателе",
 
     });
-
     const fetching = async () => {
         try {
             const response = await axios.get(`/teacher/${teacher_id}`);
             teacher.value = response.data;
+
         } catch (e) {
             // teacher.value = {
             //     id: teacher_id,

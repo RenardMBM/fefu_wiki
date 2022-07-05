@@ -11,9 +11,8 @@ export interface State {
 export default createStore<State>({
   state: {
     user: {
-      isAuth: true, //TODO: =false
-      permission:2, //TODO: =1
-      account:""
+      permission: 2, //TODO: =1
+      email: ""
     },
     format: {
       isMobile: false,
@@ -32,24 +31,20 @@ export default createStore<State>({
       {
         id: 2,
         title: "Самые строгие",
-        request_url: "hard"
+        request_url: "-easy"
       }
     ]
   },
   mutations:{
     signIn(state: State, data: User){
-      state.user.isAuth = (data.permission > 0);
       state.user.permission = data.permission;
-      state.user.account = data.account;
+      state.user.email = data.email;
     },
     mobileFormat(state:State, payload){
       state.format.isMobile = payload.isMobile;
     }
   },
   getters:{
-    isAuth(state: State){
-      return state.user.isAuth;
-    },
     getTypesOfTops(state: State){
       return state.typesOfTops;
     }

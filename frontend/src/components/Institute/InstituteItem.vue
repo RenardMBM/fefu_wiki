@@ -1,7 +1,7 @@
 <script lang="ts">
 import ContentBlock from "@/components/Content/ContentBlock.vue";
-import ShortPost from "@/models/ShortPostModel";
 import {defineComponent, PropType} from "vue";
+import ShortPost from "@/models/ShortPostModel";
 
 export default defineComponent({
   name: "InstituteItem",
@@ -22,8 +22,6 @@ export default defineComponent({
        @click="$router.push(`/institute/${institute.id}`)"
   >
     <div>{{ institute.title }}</div>
-    <div v-for="block in institute.blocks">{{ block.title }}: {{ block.content }}</div>
-
   </div>
 </template>
 

@@ -8,7 +8,7 @@ export default defineComponent({
   components: {NavButton},
   computed: {
     permission() {
-      return store.getters.isAuth && store.state.user.permission
+      return store.state.user.permission
     }
   }
 })
@@ -21,7 +21,7 @@ export default defineComponent({
       <nav-button style="border-top: 1px solid #bdbdbd;" @click="$router.push('/institutes')">Институты и школы</nav-button>
       <nav-button  @click="$router.push('/teachers')">Наши преподаватели</nav-button>
       <div v-if="permission > 1" class="navbar__moder_btns">
-        <nav-button @click="">Заявки на модерацию</nav-button>
+        <nav-button @click="$router.push('/editRequests')">Заявки на модерацию</nav-button>
         <nav-button @click="">Создание преподавателя</nav-button>
         <nav-button @click="">Создание института</nav-button>
       </div>

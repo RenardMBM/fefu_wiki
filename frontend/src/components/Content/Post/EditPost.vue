@@ -40,7 +40,7 @@ export default defineComponent({
   },
   computed: {
     permission() {
-      return (store.getters.isAuth && store.state.user.permission > 1);
+      return (store.state.user.permission > 1);
     }
   },
 })

@@ -22,8 +22,8 @@ export default defineComponent({
   },
   computed: {
     accountName(){
-      if (store.state.user.isAuth){
-         return  store.state.user.account
+      if (store.state.user.permission > 0){
+         return  store.state.user.email
       }
       else{
          return  'Вы не представились системе';

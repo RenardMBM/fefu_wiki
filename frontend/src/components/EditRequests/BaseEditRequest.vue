@@ -41,12 +41,12 @@ export default defineComponent({
     const reason = ref<string> ("");
     function acceptModification(){
       sendSolution(modifiedPost.value.post_id, true, "");
-      router.push(`/editRequests/institute`)
+      router.push(`/editRequests`)
     }
     function sendReason(){
       sendSolution(modifiedPost.value.post_id, false, reason.value);
       cancelDialog.value = false;
-      router.push(`/editRequests/institute`)
+      router.push(`/editRequests`)
     }
     return {
       post,
