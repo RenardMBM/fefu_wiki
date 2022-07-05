@@ -27,6 +27,7 @@ export default defineComponent({
 
 <style scoped>
 .dialog {
+  z-index: 1;
   top: 0;
   bottom: 0;
   right: 0;

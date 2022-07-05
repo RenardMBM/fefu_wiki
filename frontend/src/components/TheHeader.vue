@@ -63,7 +63,8 @@ export default defineComponent({
         <base-dialog v-model:show="loginDialogVisible">
           <login-form :UserId="$props.UserId"
                      @send="sendEdit" @cancel="cancelEdit"
-          /></base-dialog>
+          />
+        </base-dialog>
       </div>
       <search-post-line/>
     </div>
