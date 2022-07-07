@@ -1,13 +1,23 @@
 <script lang="ts">
-import {defineComponent, PropType} from "vue";
+import {defineComponent, PropType, ref} from "vue";
 import PostInfoColumnData from "@/models/PostInfoColumnModel";
+import BaseStarRating from "@/components/UI/BaseStarRating.vue";
 
 export default defineComponent({
   name: "PostInfoColumn",
+  components: {
+    BaseStarRating,
+  },
   props: {
     data: {
       type: Object as PropType<PostInfoColumnData>,
       required: true
+    }
+  },
+  setup() {
+    const rating = ref<number>(3.73);
+    return {
+      rating,
     }
   }
 })
@@ -21,6 +31,10 @@ export default defineComponent({
     <div class="info-raw" v-for="block in data.blocks">
       <div class="info-raw-title">{{ block.title }}</div>
       <div class="info-raw-value">{{ block.text }}</div>
+    </div>
+    <div class="info-raw">
+      <div class="info-raw-title">Халявность</div>
+      <div class="info-raw-value"><BaseStarRating :rating="rating"></BaseStarRating></div>
     </div>
   </div>
 </template>
@@ -54,8 +68,8 @@ export default defineComponent({
 .info-raw-title{
   padding: 0.5em;
   border-right: 1px solid #bdbdbd;
-  min-width: 100px;
-  max-width: 100px;
+  min-width: 120px;
+  max-width: 120px;
   text-align: center;
   background-color: #D9D9D9;
   font-weight: bold;

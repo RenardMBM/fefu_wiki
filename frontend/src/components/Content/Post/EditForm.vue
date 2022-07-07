@@ -79,7 +79,8 @@ export default defineComponent({
       >
       </base-post>
     </div>
-    <button class="btn-icon" @click="isEditMode= !isEditMode"><i class="bi bi-search"></i></button>
+    <button class="btn-icon" @click="isEditMode= !isEditMode"><i v-if="isEditMode" class="bi bi-eye"></i>
+      <i v-else class="bi bi-eye-slash"></i></button>
     <div class="edit-btns">
       <base-button @click="$emit('send', {
             id: $props.post.id,
@@ -103,9 +104,8 @@ export default defineComponent({
   display: flex;
 }
 .btn-icon {
-  margin: 5px 5px 0 calc(50% - 18px);
+  margin: 5px 5px 0 calc(50% - 15px);
   background: none;
-  width: 30px;
-  height: 30px;
+  font-size: 30px;
 }
 </style>
