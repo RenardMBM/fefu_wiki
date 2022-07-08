@@ -14,10 +14,10 @@ services:
     backend:
         container_name: backend
         build:
-            context: ../.
-            dockerfile: ./.docker/Dockerfile
+            context: ./compose/backend
+            dockerfile: Dockerfile
         image: backend:latest
-        command: "sh /www/.docker/backend.sh"
+        command: "sh /www/.docker/conf/backend/backend-dev.sh"
         volumes:
             - "../.:/www"
         working_dir: /www

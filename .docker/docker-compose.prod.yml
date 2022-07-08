@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  database:
+    container_name: database
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: dbName
+      POSTGRES_USER: dbUser
+      POSTGRES_PASSWORD: dbPassword
+
+  backend:
+    container_name: backend
+    build:
+      context: ./compose/backend
+      dockerfile: Dockerfile
+    image: backend:latest
+    command: "sh /www/.docker/conf/backend/backend.sh"
+    volumes:
+      - "../.:/www"
+    working_dir: /www
+    depends_on:
+      - database
+      - redis
+    environment:
+      PYTHONUNBUFFERED: 1
+      POSTGRES_DB: dbName
+      POSTGRES_USER: dbUser
+      POSTGRES_PASSWORD: dbPassword
+      DJANGO_SETTINGS_MODULE: fefu_wiki:settings
+    ports:
+      - "8000:8000"
+
+  redis:
+    container_name: redis
+    image: redis:5.0.14
+    ports:
+      - "6379:6379"
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./compose/frontend
+      dockerfile: Dockerfile
+    image: frontend:latest
+    depends_on:
+      - backend
+    volumes:
+      - "./conf/nginx/:/etc/nginx/conf.d"
+    ports:
+      - "80:80"
