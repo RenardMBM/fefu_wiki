@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
             return 3
         if obj.is_staff:
             return 2
-        if obj.is_authenticated():
+        if obj.is_authenticated:
             return 1
         return 0
 

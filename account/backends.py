@@ -9,7 +9,8 @@ class MSBackend(ModelBackend):
             user = User.objects.get(email=email)
 
         except User.DoesNotExist:
-            user = User(email=email).save()
+            user = User(email=email)
+            user.save()
         return user
 
     def get_user(self, user_id):
