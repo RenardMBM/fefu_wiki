@@ -33,7 +33,7 @@ export default defineComponent({
       required: false,
       default: true
     },
-    is_colum:{
+    is_column:{
       type: Boolean,
       required: false,
       default: true
@@ -63,7 +63,7 @@ export default defineComponent({
         <h1 class="edit-post-title" style="text-align: center">{{title}}</h1>
         <base-area-input v-model="postMarkdown" style="height: 75px"></base-area-input>
       </div>
-      <div class="edit-info-block" v-if="is_colum">
+      <div class="edit-info-block" v-if="is_column">
         <div class="info-raw" v-for="(block, block_i) in post_info.blocks" :key="block_i">
           <div class="info-raw-title" v-if="block.type !== 'rates' && block.type !== 'list_InstituteItem'">
             <div style="margin: 15px 10px 2px 0">{{block.title}}</div>
@@ -84,7 +84,7 @@ export default defineComponent({
             text: postMarkdown,
             info: post_info
              }"
-          :is_colum="is_colum"
+          :is_column="is_column"
       >
       </base-post>
     </div>

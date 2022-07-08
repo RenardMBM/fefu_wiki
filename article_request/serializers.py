@@ -12,7 +12,7 @@ __all__ = ['ShortUniversityRequestSerializer', 'UniversityRequestSerializer',
 class ShortUniversityRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = UniversityRequest
-        fields = ['title', 'created_at']
+        fields = ['id', 'title', 'created_at']
 
 
 class UniversityRequestSerializer(serializers.ModelSerializer):
@@ -61,7 +61,7 @@ class TeacherRequestSerializer(TeacherSerializer):
 class ShortTeacherRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = TeacherRequest
-        fields = ['full_name', 'created_at']
+        fields = ['id', 'full_name', 'created_at']
 
 
 class TeacherEditSerializer(serializers.ModelSerializer):

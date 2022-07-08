@@ -26,6 +26,11 @@ export default defineComponent({
     post:{
       type: Object as PropType<Post>,
       required: true
+    },
+    is_column:{
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   setup(props){
@@ -64,8 +69,8 @@ export default defineComponent({
 
 <template>
   <base-button @click="changeVersion" style="margin-bottom: 10px">{{ !isModifiedVisible ? "Старая версия" : "Новая версия" }}</base-button>
-  <base-post v-if="isModifiedVisible" :id="modifiedPost.id" :post="modifiedPost"></base-post>
-  <base-post v-else :id="post.id" :post="post"></base-post>
+  <base-post v-if="isModifiedVisible" :id="modifiedPost.id" :post="modifiedPost" :is_column="is_column"/>
+  <base-post v-else :id="post.id" :post="post" :is_column="is_column"/>
 
   <base-button @click="acceptModification" style="margin: 6px">Принять</base-button>
   <base-button @click="cancelDialog=true" style="margin: 6px">Отклонить</base-button>

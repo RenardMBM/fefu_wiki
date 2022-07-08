@@ -3,9 +3,10 @@ import Post from "@/models/PostModel";
 
 export default async function sendInstituteEdit(post: Post) {
     try {
-        await axios.post(`/article/university/${post.id}/`, {
+        await axios.post(`/article_request/university/`, {
             title: post.title,
-            content: post.text
+            content: post.text,
+            university_article: post.id
         },{withCredentials: true});
     } catch (e) {
         // alert('Ошибка')

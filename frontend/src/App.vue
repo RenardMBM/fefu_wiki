@@ -11,11 +11,24 @@
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import ScreenSize from "@/components/UILogics/ScreenSize.vue";
+import store from "@/store"
 
 import {defineComponent} from "vue"
+import userDataToUser from "@/hooks/converters/userDataToUser";
 
 export default defineComponent({
-  components: {TheHeader, TheNavbar, ScreenSize}
+  components: {TheHeader, TheNavbar, ScreenSize},
+  setup(){
+    const dataElem = document.getElementById('djangoData');
+    const data = dataElem?.textContent
+    if (data) {
+      store.commit('signIn', userDataToUser(JSON.parse(JSON.parse(data))))
+    }
+    if (dataElem){
+      dataElem.remove()
+    }
+
+  }
 })
 </script>
 

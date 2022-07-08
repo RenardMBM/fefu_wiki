@@ -27,7 +27,7 @@ export default defineComponent({
       type: Object as PropType<Post | undefined>,
       required:true
     },
-    is_colum:{
+    is_column:{
       type: Boolean,
       required: false,
       default: true
@@ -45,7 +45,7 @@ export default defineComponent({
         <mark-down :text="post.text"></mark-down>
       </content-block>
     </div>
-    <post-info-column v-if="is_colum" :data="post.info"></post-info-column>
+    <post-info-column v-if="is_column" :data="post.info"></post-info-column>
   </div>
 </template>
 

@@ -1,17 +1,20 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import EditRequestList from "@/components/EditRequests/EditRequestList.vue";
+import getEditRequestsInstitutes from "@/hooks/requests/editRequests/getEditRequestsInstitutes";
+import getEditRequestsTeacher from "@/hooks/requests/editRequests/getEditRequestsTeacher";
 export default defineComponent({
   name: "EditRequestsView",
   components: {
     EditRequestList
   },
   setup(){
-    // const { editRequestsTeachers } = ;
-    // const { editRequestsInstitutes } = ;
+    const { editRequestsTeachers } = getEditRequestsTeacher() ;
+    const { editRequestsInstitutes } = getEditRequestsInstitutes();
+    console.log(editRequestsInstitutes.value)
     return {
-      // editRequestsTeachers,
-      // editRequestsInstitutes
+      editRequestsTeachers,
+      editRequestsInstitutes
     }
   }
 })

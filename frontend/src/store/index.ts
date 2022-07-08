@@ -11,9 +11,7 @@ export interface State {
 export default createStore<State>({
   state: {
     user: {
-      csrftoken: "",
-      sessionid: "",
-      permission: 2, //TODO: =1
+      permission: 0, //TODO: =1
       email: ""
     },
     format: {

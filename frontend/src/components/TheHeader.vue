@@ -43,7 +43,7 @@ export default defineComponent({
       window.location.href = "http://" + location.host + '/login/microsoft/'
     }
     function logout(){
-      window.location.href = "http://" + location.host +'/logout'
+      window.location.href = "http://" + location.host +'/logout/'
     }
     return {
       login,

@@ -21,7 +21,7 @@ export default defineComponent({
       type: Object as PropType<Post>,
       required: true
     },
-    is_colum:{
+    is_column:{
       type: Boolean,
       required: false,
       default: true
@@ -58,7 +58,7 @@ export default defineComponent({
   <div v-if="permission" class="edit-block" style="margin-bottom: 10px">
     <base-button @click="editDialogVisible=true">Изменить</base-button>
     <base-dialog v-model:show="editDialogVisible">
-      <edit-form :post="$props.post" :is_colum="is_colum"
+      <edit-form :post="$props.post" :is_column="is_column"
                  @send="sendEdit" @cancel="cancelEdit"
       />
     </base-dialog>

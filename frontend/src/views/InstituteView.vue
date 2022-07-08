@@ -32,7 +32,7 @@ export default defineComponent({
 
 <template>
   <edit-post v-if="!isNaN(id)" @send="send" :post="institute" :is_colum="false" ></edit-post>
-  <base-post :id="id" :post="institute" :is_colum="false"></base-post>
+  <base-post :id="id" :post="institute" :is_column="false"></base-post>
 </template>
 
 <style scoped>
