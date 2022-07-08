@@ -12,8 +12,9 @@ def send_email(to: str, subject: str, text: str):
     msg['From'] = settings.EMAIL_DATA['email']
     msg['To'] = to
 
-    server = smtplib.SMTP(*settings.SMTP_SERVER)
-    server.starttls()
-    server.login(settings.EMAIL_DATA['email'], settings.EMAIL_DATA["password"])
+    server = smtplib.SMTP_SSL(*settings.SMTP_SERVER)
+    server.ehlo()
+    # server.starttls()
+    server.login(settings.EMAIL_DATA['login'], settings.EMAIL_DATA["password"])
     server.send_message(msg)
     server.quit()

@@ -9,7 +9,7 @@ def create_workers(for_queues: dict[str, int]):
     assert all(map(lambda queue_name: queue_name in queues, for_queues))
 
     workers_queues = []
-    for key, value in queues.items():
+    for key, value in for_queues.items():
         for i in range(value):
             workers_queues.append(queues[key])
     with Connection(conn):
