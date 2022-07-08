@@ -40,6 +40,8 @@ class TeacherRequestSerializer(TeacherSerializer):
         universities = validated_data['universities']
         del validated_data['teacher_birthday']
         del validated_data['universities']
+        if 'image' not in validated_data:
+            validated_data['image'] = validated_data['teacher_article'].image
         birth_year = birthday.year
         birthday = birthday.replace(year=2020)
         teacher_request = TeacherRequest.objects.create(birthday=birthday,

@@ -28,10 +28,12 @@ class TeacherViewSet(viewsets.ModelViewSet):
     queryset = TeacherArticle.objects.all()
     http_method_names = ['head', 'get', 'post']
 
-    filter_backends = [DjangoFilterBackend, filters.OrderingFilter, NearBirthdayFilter]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter,
+                       NearBirthdayFilter, filters.SearchFilter]
     filterset_fields = ['universities']
     ordering_fields = ['full_name', 'easy__rate']
     ordering = ['full_name']
+    search_fields = ['full_name']
 
     def get_serializer_class(self):
         if self.action == 'list':

@@ -34,7 +34,7 @@ class TeacherArticle(models.Model):
     universities = models.ManyToManyField(UniversityArticle)
 
     full_name = models.CharField(_('full name'), max_length=128)
-    image = models.ImageField(_('profile img'))
+    image = models.ImageField(_('profile img'), upload_to='teacher/', default='default.png')
     academic_degree = models.CharField(_('academic degree'), max_length=256)
     content = models.TextField()
     birthday = models.DateField(_("day and month of birth"))
