@@ -108,6 +108,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'account.pagination.DefaultPagination',
 }
+
+
+# Microsoft auth
+
+MS_AZURE = {
+    'CLIENT_ID': getenv('AZURE_CLIENT_ID'),
+    'CLIENT_SECRET': getenv('AZURE_CLIENT_SECRET'),
+    'AUTHORITY': rf'https://login.microsoftonline.com/{getenv("AZURE_TENANT")}',
+    'SCOPE': ['email'],
+    'SESSION_TYPE': 'filesystem',
+    'REDIRECT_PATH': 'login/microsoft/getAToken',
+    'FULL_REDIRECT_PATH': 'http://localhost:8000/login/microsoft/getAToken',
+}
+
+AUTHENTICATION_BACKENDS = ('account.backends.MSBackend',)

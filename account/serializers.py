@@ -1,21 +1,12 @@
 from rest_framework import serializers
 
 from account.models import User
-from django.contrib.auth.models import AnonymousUser
 
 __all__ = ['UserSerializer']
 
 
 class UserSerializer(serializers.ModelSerializer):
     access_level = serializers.SerializerMethodField()
-
-    def create(self, validated_data: dict):
-        password = validated_data['password']
-        validated_data['password'].pop()
-        user = User.objects.create(**validated_data)
-        user.set_password(password)
-
-        return user.save()
 
     def get_access_level(self, obj):
         if obj.is_superuser:
