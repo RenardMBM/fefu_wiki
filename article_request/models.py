@@ -13,13 +13,11 @@ class UniversityRequest(UniversityArticle):
     university_article = models.ForeignKey(UniversityArticle, on_delete=models.CASCADE,
                                            related_name="+")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    updated_at = None
 
 
 class TeacherRequest(TeacherArticle):
     teacher_article = models.ForeignKey(TeacherArticle, on_delete=models.CASCADE, related_name="+")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    updated_at = None
 
 
 @receiver(pre_save, sender=TeacherRequest)  # TODO: упростить, исправить

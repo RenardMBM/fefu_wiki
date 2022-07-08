@@ -4,7 +4,9 @@ from article_request.models import *
 from article.serializers import TeacherSerializer
 
 __all__ = ['ShortUniversityRequestSerializer', 'UniversityRequestSerializer',
-           'TeacherRequestSerializer', 'ShortTeacherRequestSerializer']
+           'UniversityEditSerializer',
+           'TeacherRequestSerializer', 'ShortTeacherRequestSerializer',
+           'TeacherEditSerializer']
 
 
 class ShortUniversityRequestSerializer(serializers.ModelSerializer):
@@ -23,6 +25,12 @@ class UniversityRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = UniversityRequest
         exclude = ['author']
+
+
+class UniversityEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeacherRequest
+        exclude = ['author', 'university_article', 'created_at', 'updated_at']
 
 
 # Teacher
@@ -52,3 +60,9 @@ class ShortTeacherRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = TeacherRequest
         fields = ['full_name', 'created_at']
+
+
+class TeacherEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeacherRequest
+        exclude = ['author', 'teacher_article', 'created_at', 'updated_at']
