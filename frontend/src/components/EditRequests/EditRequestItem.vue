@@ -18,7 +18,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="short-post" @click="$router.push(`/editRequests/${typeRequest}/${editRequest.id}`)">
+  <div class="post-block" @click="$router.push(`/editRequests/${typeRequest}/${editRequest.id}`)">
     <div><strong>{{ editRequest.title }}</strong> </div>
     <div class="sub-info" v-for="block in editRequest.blocks">{{ block.title }}: {{ block.content }}</div>
   </div>

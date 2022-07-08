@@ -6,6 +6,7 @@ import ContentBlock from "@/components/Content/ContentBlock.vue";
 import BasePost from "@/components/Content/Post/BasePost.vue";
 import BaseTitle from "@/components/Content/BaseTitle.vue";
 import BaseInput from "@/components/UI/BaseInput.vue";
+import BaseDate from "@/components/UI/BaseDate.vue";
 
 import Post from "@/models/PostModel";
 import PostInfoColumnData from "@/models/PostInfoColumnModel";
@@ -19,7 +20,8 @@ export default defineComponent({
     ContentBlock,
     BasePost,
     BaseTitle,
-    BaseInput
+    BaseInput,
+    BaseDate
   },
   props: {
     post: {
@@ -27,6 +29,11 @@ export default defineComponent({
       required: true
     },
     edit:{
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    is_colum:{
       type: Boolean,
       required: false,
       default: true
@@ -56,13 +63,14 @@ export default defineComponent({
         <h1 class="edit-post-title" style="text-align: center">{{title}}</h1>
         <base-area-input v-model="postMarkdown" style="height: 75px"></base-area-input>
       </div>
-      <div class="edit-info-block">
+      <div class="edit-info-block" v-if="is_colum">
         <div class="info-raw" v-for="(block, block_i) in post_info.blocks" :key="block_i">
-          <div class="info-raw-title">
+          <div class="info-raw-title" v-if="block.type !== 'rates' && block.type !== 'list_InstituteItem'">
             <div style="margin: 15px 10px 2px 0">{{block.title}}</div>
           </div>
-          <div class="info-raw-value">
-            <base-input v-model="block.text"></base-input>
+          <div class="info-raw-value" v-if="block.type !== 'rates' && block.type !== 'list_InstituteItem'">
+            <base-input v-if="block.type === 'string'" v-model="block.content"/>
+            <base-date v-else-if="block.type==='date'" v-model="block.content"/>
           </div>
         </div>
       </div>
@@ -76,6 +84,7 @@ export default defineComponent({
             text: postMarkdown,
             info: post_info
              }"
+          :is_colum="is_colum"
       >
       </base-post>
     </div>

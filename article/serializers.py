@@ -15,7 +15,7 @@ class ShortUniversitySerializer(serializers.ModelSerializer):
 class UniversitySerializer(serializers.ModelSerializer):
     class Meta:
         model = UniversityArticle
-        fields = ['title', 'content']
+        fields = ['id', 'title', 'content']
 
 
 # Teacher
@@ -56,6 +56,7 @@ class TeacherSerializer(serializers.ModelSerializer):
     easy = TeacherRaitingSerializer(read_only=True)
     full_birthday = serializers.SerializerMethodField()
     teacher_birthday = serializers.DateField(write_only=True)
+    universities = ShortUniversitySerializer(many=True)
 
     def get_full_birthday(self, obj):
         return obj.birthday.replace(year=obj.birth_year)

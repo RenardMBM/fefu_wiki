@@ -14,14 +14,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="short-post" @click="$router.push(`/teacher/${teacher.id}`)">
+  <div class="post-block" @click="$router.push(`/teacher/${teacher.id}`)">
     <div><strong>{{ teacher.title }}</strong> </div>
     <div class="sub-info" v-for="block in teacher.blocks">{{ block.title }}: {{ block.content }}</div>
   </div>
 </template>
 
 <style scoped>
-.short-post {
+.post-block {
   margin: 6px 0 6px 0;
   padding: 15px;
   line-height: 20px;
@@ -35,11 +35,11 @@ export default defineComponent({
   flex-direction: column;
   cursor: pointer;
 }
-.short-post:hover {
+.post-block:hover {
   background-color: #c3c6e5;
   transition-duration: 0.3s;
 }
-.short-post:active {
+.post-block:active {
   background-color: #afb2ce;
   transform: translateY(1px);
 }

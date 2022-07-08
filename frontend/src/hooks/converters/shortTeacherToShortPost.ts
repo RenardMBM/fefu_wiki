@@ -9,7 +9,7 @@ export default function shortTeacherToShortPost(shortTeacher: BackendShortTeache
         id: shortTeacher.id,
         title: shortTeacher.full_name,
         blocks: [
-            {title:"Халявность", content:shortTeacher.easy.toString()} ,
+            {title:"Халявность", content:shortTeacher.easy.rate.toString()} ,
             {title:"День рождения", content:shortTeacher.full_birthday}
         ]
     }
@@ -18,7 +18,7 @@ export default function shortTeacherToShortPost(shortTeacher: BackendShortTeache
             id: shortTeacher.id,
             title: shortTeacher.full_name,
             blocks:[
-                {title:"Халявность", content:shortTeacher.easy.toString()} ,
+                {title:"Халявность", content:shortTeacher.easy.rate.toString()} ,
             ]
         }
     }

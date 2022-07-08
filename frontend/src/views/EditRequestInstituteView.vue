@@ -1,7 +1,7 @@
 <script lang="ts">
 import {defineComponent, ref} from "vue";
 import ErrorView from "@/views/ErrorView.vue";
-import getModifiedInstituteData from "@/hooks/editRequests/getModifiedInstituteData";
+import getModifiedInstituteData from "@/hooks/requests/editRequests/getModifiedInstituteData";
 import {useRoute} from "vue-router";
 import getInstituteData from "@/hooks/requests/institutes/getInstituteData";
 import BaseEditRequest from "@/components/EditRequests/BaseEditRequest.vue";

@@ -47,7 +47,7 @@ export default defineComponent({
     const dict = ref<Dictionary<number>>({});
     const usersCount = ref<number>(1);
 
-    const CommQuery = ref(props.newComm)
+    const CommQuery = ref<string>(props.newComm)
     function onAddComm() {
       emit('addComment', CommQuery.value);
     }

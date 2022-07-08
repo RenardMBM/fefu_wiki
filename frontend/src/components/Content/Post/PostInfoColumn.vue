@@ -1,12 +1,14 @@
 <script lang="ts">
-import {defineComponent, PropType, ref} from "vue";
+import {defineComponent, PropType} from "vue";
 import PostInfoColumnData from "@/models/PostInfoColumnModel";
 import BaseStarRating from "@/components/UI/BaseStarRating.vue";
+import InstituteItem from "@/components/Institute/InstituteItem.vue";
 
 export default defineComponent({
   name: "PostInfoColumn",
   components: {
     BaseStarRating,
+    InstituteItem
   },
   props: {
     data: {
@@ -14,12 +16,6 @@ export default defineComponent({
       required: true
     }
   },
-  setup() {
-    const rating = ref<number>(3.73);
-    return {
-      rating,
-    }
-  }
 })
 </script>
 
@@ -28,13 +24,33 @@ export default defineComponent({
     <div class="info-img-block">
       <img class="info-img" :src="data.img" alt="post img :(">
     </div>
-    <div class="info-raw" v-for="block in data.blocks">
-      <div class="info-raw-title">{{ block.title }}</div>
-      <div class="info-raw-value">{{ block.text }}</div>
-    </div>
-    <div class="info-raw">
-      <div class="info-raw-title">Халявность</div>
-      <div class="info-raw-value"><BaseStarRating :rating="rating"></BaseStarRating></div>
+    <div v-for="block in data.blocks">
+      <div v-if="block.type==='date'" class="info-raw" >
+        <div class="info-raw-title">{{ block.title }}</div>
+        <div class="info-raw-value">{{ block.content }}</div>
+      </div>
+      <div v-else-if="block.type==='string'" class="info-raw" >
+        <div class="info-raw-title">{{ block.title }}</div>
+        <div class="info-raw-value">{{ block.content }}</div>
+      </div>
+      <div v-else-if="block.type==='rates'" >
+        <div class="info-raw" v-for="rate in block.content">
+          <div class="info-raw-title">{{ rate.title }} </div>
+          <div class="info-raw-value">
+            <BaseStarRating :rating="rate.rate"/>
+          </div>
+        </div>
+      </div>
+      <div v-else-if="block.type==='list_InstituteItem'">
+        <div class="info-raw">
+          <div class="info-raw-title"> {{ block.title }} </div>
+          <div class="info-raw-value" style="display: flex; flex-direction: column;">
+            <div v-for="institute in block.content" style="margin-bottom: 0.1em; margin-top: 0.1em">
+              <institute-item :institute="institute"/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -66,6 +82,9 @@ export default defineComponent({
   border-top: 0;
 }
 .info-raw-title{
+  justify-content: center;
+  display: flex;
+  align-items: center;
   padding: 0.5em;
   border-right: 1px solid #bdbdbd;
   min-width: 120px;

@@ -8,8 +8,8 @@ export default function getInstitutes(){
 
     const fetching = async () => {
         try {
-            const response = await axios.get('/GetAllInstitutes');
-            institutes.value = response.data.map(shortInstituteToShortPost);
+            const response = await axios.get('/article/university/', {withCredentials: true});
+            institutes.value = response.data.results.map(shortInstituteToShortPost);
         } catch (e) {
             institutes.value = [
                 {

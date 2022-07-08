@@ -6,7 +6,7 @@ import Post from "@/models/PostModel";
 import BaseButton from "@/components/UI/BaseButton.vue";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import BaseAreaInput from "@/components/UI/BaseAreaInput.vue";
-import sendSolution from "@/hooks/editRequests/sendSolution";
+import sendSolution from "@/hooks/requests/editRequests/sendSolution";
 import {useRouter} from "vue-router";
 import ModifiedPost from "@/models/ModifiedPostModel";
 export default defineComponent({

@@ -1,6 +1,7 @@
 export interface PostInfoColumnRaw {
+    type: string,
     title: string,
-    text: string
+    content: Object
 }
 
 export default interface PostInfoColumnData {

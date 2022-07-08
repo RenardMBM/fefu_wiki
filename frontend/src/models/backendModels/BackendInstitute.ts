@@ -1,5 +1,5 @@
-export default interface BackendShortInstitute {
+export default interface BackendInstitute {
     id: number,
     title : string,
-    text: string
-} // TODO: incorrect format
+    content: string
+}

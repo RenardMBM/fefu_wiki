@@ -7,7 +7,10 @@ export default function searchPost(searchQuery: String){
 
     const fetching = async () => {
         try {
-            const response = await axios.post('/search', { searchQuery: searchQuery});
+            const response = await axios.post(
+                '/search/',
+                { searchQuery: searchQuery},
+                {withCredentials: true});
             posts.value = response.data;
         } catch (e) {
             posts.value = [

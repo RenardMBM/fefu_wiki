@@ -4,7 +4,9 @@ import Post from "@/models/PostModel";
 
 export default async function sendEditData(path:string, post: Post) {
     try {
-        const response = await axios.post(`${path}/edit`, post);
+        console.log("Send")
+        console.log(post)
+        const response = await axios.post(`${path}`, post);
         return 200;
         // return response.request.status;
     } catch (e) {

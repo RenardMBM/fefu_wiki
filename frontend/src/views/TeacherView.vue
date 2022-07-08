@@ -5,7 +5,10 @@ import getTeacherData from "@/hooks/requests/teachers/getTeacherData";
 import BasePost from "@/components/Content/Post/BasePost.vue";
 import EditPost from "@/components/Content/Post/EditPost.vue";
 import CommentsBlock from "@/components/Content/comments/CommentsBlock.vue";
-import CommentData from "@/models/CommentModel";
+import Post from "@/models/PostModel";
+import sendComments from "@/hooks/requests/comments/sendComment";
+import sendTeacherEdit from "@/hooks/requests/teachers/sendTeacherEdit";
+import getComments from "@/hooks/requests/comments/getComments";
 
 export default defineComponent({
   name: "TeacherView",
@@ -15,26 +18,30 @@ export default defineComponent({
     const id = ref<number>(Number(route.params.id as string));
 
     const commTitle = ref<String>("Комментарии");
-    const comments = ref<Array<CommentData>>([{userId: 1202, date: new Date("01-03-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 },
-      {userId: 123, date: new Date("2003-02-03"), text: "2003-01-01", dislikes: 0, likes: 1, voted: 0 },
-      {userId: 11, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 1 },
-      {userId: 1202, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: 0 },
-      {userId: null, date: new Date("01-01-2003"), text: "Привет", dislikes: 0, likes: 1, voted: -1 }])
+    const { comments } = getComments(id.value);
+
+    function send(post: Post) {
+      sendTeacherEdit(post)
+    }
+
+    function createComment(text: string) {
+      sendComments(id.value, text)
+    }
 
     if (id) {
       const {teacher} = getTeacherData(id.value);
-      return {id, teacher, commTitle, comments}
+      return {id, teacher, commTitle, comments, send, createComment}
     }
     const teacher = ref(undefined);
-    return {id, teacher, commTitle, comments}
+    return {id, teacher, commTitle, comments, send, createComment}
   }
 })
 </script>
 
 <template>
-  <edit-post v-if="!isNaN(id)" :post="teacher"></edit-post>
+  <edit-post v-if="!isNaN(id)" @send="send" :post="teacher"></edit-post>
   <base-post :id="id" :post="teacher"></base-post>
-  <comments-block :title="commTitle" :comments="comments" ></comments-block>
+  <comments-block :title="commTitle" :comments="comments" @addComment="createComment"></comments-block>
 </template>
 
 <style scoped>

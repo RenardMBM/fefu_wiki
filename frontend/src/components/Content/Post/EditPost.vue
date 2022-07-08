@@ -4,12 +4,13 @@ import BaseButton from "@/components/UI/BaseButton.vue";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import EditForm from "@/components/Content/Post/EditForm.vue";
 import Post from "@/models/PostModel";
-import sendEditData from "@/hooks/requests/sendEditData";
-import router from "@/router";
 import store from "@/store";
 
 export default defineComponent({
   name: "EditPost",
+  emits:[
+    "send",
+  ],
   components: {
     BaseButton,
     BaseDialog,
@@ -19,17 +20,23 @@ export default defineComponent({
     post:{
       type: Object as PropType<Post>,
       required: true
+    },
+    is_colum:{
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
-  setup(){
+  setup(props, {emit}){
     const editDialogVisible = ref(false);
     const status = ref<Number>(0)
     function cancelEdit(){
       editDialogVisible.value = false;
     }
     function sendEdit(post: Post){
-      sendEditData(`${router.currentRoute.value.fullPath}`, post);
       cancelEdit();
+      emit('send', post)
+      // sendEditData(`${router.currentRoute.value.fullPath}`, post);
     }
     return{
       editDialogVisible,
@@ -51,7 +58,7 @@ export default defineComponent({
   <div v-if="permission" class="edit-block" style="margin-bottom: 10px">
     <base-button @click="editDialogVisible=true">Изменить</base-button>
     <base-dialog v-model:show="editDialogVisible">
-      <edit-form :post="$props.post"
+      <edit-form :post="$props.post" :is_colum="is_colum"
                  @send="sendEdit" @cancel="cancelEdit"
       />
     </base-dialog>

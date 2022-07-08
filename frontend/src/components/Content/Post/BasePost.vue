@@ -26,6 +26,11 @@ export default defineComponent({
     post: {
       type: Object as PropType<Post | undefined>,
       required:true
+    },
+    is_colum:{
+      type: Boolean,
+      required: false,
+      default: true
     }
   }
 })
@@ -33,19 +38,19 @@ export default defineComponent({
 
 <template>
   <error-view v-if="isNaN(id) || post === undefined"></error-view>
-  <div v-else class="short-post">
+  <div v-else class="post-block">
     <div class="post-main-content">
       <base-title class="post-title">{{ post.title }}</base-title>
       <content-block>
         <mark-down :text="post.text"></mark-down>
       </content-block>
     </div>
-    <post-info-column :data="post.info"></post-info-column>
+    <post-info-column v-if="is_colum" :data="post.info"></post-info-column>
   </div>
 </template>
 
 <style scoped>
-.short-post{
+.post-block{
   display: flex;
   flex-wrap: wrap-reverse;
 }

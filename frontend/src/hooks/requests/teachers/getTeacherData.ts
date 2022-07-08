@@ -1,6 +1,7 @@
 import axios from "axios";
 import {ref, onMounted} from 'vue';
 import Post from "@/models/PostModel";
+import teacherDataToPost from "@/hooks/converters/teacherDataToPost";
 
 export default function getTeacherData(teacher_id: number){
     const teacher = ref<Post>({
@@ -10,12 +11,46 @@ export default function getTeacherData(teacher_id: number){
             img: "/img/logo.9e4b96be.png",
             blocks:[
                 {
+                    type: "date",
                     title: "дата рождения",
-                    text: "12-01-2002"
+                    content: "2002-12-01"
                 },
                 {
+                    type: "string",
                     title: "Ученая степень",
-                    text: "Доктор наук …"
+                    content: "Доктор наук …"
+                },
+                {
+                    type:"rates",
+                    title: "Рейтинг",
+                    content: [
+                        {
+                            title: "Халявность",
+                            rate: 4.5,
+                            last_rate: 0
+                        },
+                        {
+                            title: "Гениальность",
+                            rate: 1,
+                            last_rate: 0
+                        }
+                    ]
+                },
+                {
+                    type: "list_InstituteItem",
+                    title: "Школы",
+                    content: [
+                        {
+                            id: 0,
+                            title: "Институт математики и комп",
+                            blocks:[]
+                        },
+                        {
+                            id: 1,
+                            title: "Политех",
+                            blocks:[]
+                        }
+                    ]
                 }
             ]
         },
@@ -24,9 +59,9 @@ export default function getTeacherData(teacher_id: number){
     });
     const fetching = async () => {
         try {
-            const response = await axios.get(`/teacher/${teacher_id}`);
-            teacher.value = response.data;
-
+            const response = await axios.get(`/article/teacher/${teacher_id}/`);
+            console.log(response.data);
+            teacher.value = teacherDataToPost(response.data);
         } catch (e) {
             // teacher.value = {
             //     id: teacher_id,
@@ -48,5 +83,5 @@ export default function getTeacherData(teacher_id: number){
     }
     onMounted(fetching)
 
-    return {teacher}
+    return { teacher }
 }

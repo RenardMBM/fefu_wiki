@@ -22,7 +22,7 @@ export default function getTopPosts(id_top_type: number) {
 
     const fetching = async () => {
         try {
-            const response = await axios.get(`/api/teacher?ordering=${topType.request_url}`);
+            const response = await axios.get(`/article/teacher?ordering=${topType.request_url}`);
             top.value.posts = response.data.map(shortTeacherToShortPost);
         } catch (e) {
         }

@@ -50,6 +50,7 @@ export default defineComponent({
 <style scoped>
 .mask{
   mask-image: url("@/assets/star-svgrepo-com.svg");
+  /*TODO: path to media */
 }
 .stars{
   display: flex;

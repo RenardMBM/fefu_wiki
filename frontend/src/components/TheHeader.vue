@@ -1,10 +1,9 @@
 <script lang="ts">
-import {defineComponent, PropType, ref} from "vue"
+import {defineComponent, PropType} from "vue"
 import BaseButton from "@/components/UI/BaseButton.vue";
 import BaseInput from "@/components/UI/BaseInput.vue";
 import SearchPostLine from "@/components/SearchPostLine.vue";
 import store from "@/store"
-import Post from "@/models/PostModel";
 import BaseDialog from "@/components/UI/BaseDialog.vue";
 import EditForm from "@/components/Content/Post/EditForm.vue";
 import LoginForm from "@/components/Content/loginForm.vue";
@@ -28,6 +27,9 @@ export default defineComponent({
       else{
          return  'Вы не представились системе';
       }
+    },
+    isAuth(){
+      return store.state.user.permission > 0;
     }
   },
   props: {
@@ -37,15 +39,15 @@ export default defineComponent({
     }
   },
   setup(){
-    const loginDialogVisible = ref(false);
-    const status = ref<Number>(0)
-    function cancelEdit(){
-      loginDialogVisible.value = false;
+    function login(){
+      window.location.href = "http://" + location.host + '/login/microsoft/'
     }
-    return{
-      loginDialogVisible: loginDialogVisible,
-      cancelEdit,
-      status
+    function logout(){
+      window.location.href = "http://" + location.host +'/logout'
+    }
+    return {
+      login,
+      logout
     }
   },
 })
@@ -57,14 +59,10 @@ export default defineComponent({
       <div class="account-block">
         <div style="margin-right: 0.5em" class="account">
           <i class="bi bi-person-circle"></i>&nbsp;
-          <div>{{accountName}}</div>
+          <div>{{ accountName }}</div>
         </div>
-        <base-button @click="loginDialogVisible=true">Войти</base-button>
-        <base-dialog v-model:show="loginDialogVisible">
-          <login-form :UserId="$props.UserId"
-                     @send="sendEdit" @cancel="cancelEdit"
-          />
-        </base-dialog>
+        <base-button v-if="isAuth" @click="logout">Выйти</base-button>
+        <base-button v-else @click="login">Войти</base-button>
       </div>
       <search-post-line/>
     </div>

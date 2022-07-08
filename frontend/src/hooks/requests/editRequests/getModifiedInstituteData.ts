@@ -11,12 +11,14 @@ export default function getModifiedInstituteData(request_id: number){
             img: "/img/logo.9e4b96be.png",
             blocks: [
                 {
+                    type: "string",
                     title: "дата создания",
-                    text: "12-01-2002"
+                    content: "12-01-2002"
                 },
                 {
+                    type: "string",
                     title: "Ученая степень",
-                    text: "Доктор наук …"
+                    content: "Доктор наук …"
                 }
             ]
         },
