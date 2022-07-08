@@ -1,9 +1,10 @@
-from django.contrib.auth.decorators import login_required
+import json
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from rest_framework import viewsets
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
 
 from account.models import User
 from account.serializers import UserSerializer
@@ -17,10 +18,10 @@ class UserViewSet(viewsets.ModelViewSet):  # TODO: только админ
 
 
 # TODO: Связь с vue
-# def index(request, *args, **kwargs):
-#     user = User.objects.prefetch_related('staff_for', 'student_for').get(pk=request.user.id)
-#     user_data = json.dumps(UserSerializer(instance=user).data)
-#     return render(request, 'index.html', context=dict(user_data=user_data))
+def index(request, *args, **kwargs):
+    user_data = json.dumps(UserSerializer(instance=request.user).data)
+    return render(request, 'index.html', context=dict(user_data=user_data))
+
 
 def ms_login_view(request):
     request.session['flow'] = build_auth_code_flow(scopes=settings.MS_AZURE['SCOPE'])
@@ -41,8 +42,8 @@ def auth(request):
     return redirect('/')
 
 
-@login_required
 @api_view(['GET'])
+@permission_classes((permissions.IsAuthenticated,))
 def logout_view(request):
     logout(request)
     return redirect('/')

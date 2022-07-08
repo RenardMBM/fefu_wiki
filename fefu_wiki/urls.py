@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
 
-from account.views import UserViewSet
+from account.views import UserViewSet, index
 from article.views import UniversityViewSet, TeacherViewSet
 from comment.views import CommentViewSet
 
@@ -16,4 +16,5 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('', include('account.urls')),
+    re_path(r"^.*$", index, name='index'),
 ]

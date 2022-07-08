@@ -6,6 +6,7 @@ __all__ = ['UserSerializer']
 
 
 class UserSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(default=None)
     access_level = serializers.SerializerMethodField()
 
     def get_access_level(self, obj):
