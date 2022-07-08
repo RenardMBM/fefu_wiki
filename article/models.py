@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models.signals import post_save
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -45,14 +45,17 @@ class TeacherArticle(models.Model):
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
 
 
-@receiver(post_save, sender=TeacherArticle)
-def save_or_create_teacher(sender, instance: TeacherArticle, created, **kwargs):
-    if created and not instance.easy:
-        TeacherRating.objects.create(teacherarticle=instance)
+@receiver(pre_save, sender=TeacherArticle)  # TODO: упростить, исправить
+def save_or_create_teacher(sender: TeacherArticle, instance: TeacherArticle,  **kwargs):
+    if sender.easy:
+        instance.easy = TeacherRating.objects.create(teacherarticle=instance)
+        instance.easy.save()
 
     else:
+        print("s")
         try:
             instance.easy.save()
 
         except ObjectDoesNotExist:
-            TeacherRating.objects.create(teacherarticle=instance)
+            instance.easy = TeacherRating.objects.create(teacherarticle=instance)
+            instance.easy.save()

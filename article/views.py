@@ -1,41 +1,37 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters
-from rest_framework.generics import ListCreateAPIView
 
 from article.models import *
 from article.serializers import *
 from article.filters import *
 
-__all__ = ['UniversityList', 'TeacherList']
+__all__ = ['UniversityViewSet', 'TeacherViewSet']
 
 
-class UniversityList(ListCreateAPIView):
+class UniversityViewSet(viewsets.ModelViewSet):
     queryset = UniversityArticle.objects.all()
-    serializer_class = ShortUniversitySerializer
-
-    page_size = 15
-    page_size_query_param = 'count'
-    max_page_size = 50
+    http_method_names = ['head', 'get', 'post']
 
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['title']
     ordering = ['title']
 
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ShortUniversitySerializer
+        return UniversitySerializer
 
-class TeacherList(ListCreateAPIView):
+
+class TeacherViewSet(viewsets.ModelViewSet):
     queryset = TeacherArticle.objects.all()
-    serializer_class = ShortTeacherSerializer
-
-    page_size = 5
-    page_size_query_param = 'count'
-    max_page_size = 50
+    http_method_names = ['head', 'get', 'post']
 
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, NearBirthdayFilter]
     filterset_fields = ['universities']
     ordering_fields = ['full_name', 'easy__rate']
     ordering = ['full_name']
 
-
-class TeacherViewSet(viewsets.ModelViewSet):
-    serializer_class = TeacherSerializer
-    queryset = TeacherArticle.objects.all()
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ShortTeacherSerializer
+        return TeacherSerializer
