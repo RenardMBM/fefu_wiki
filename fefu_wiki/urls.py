@@ -4,15 +4,16 @@ from rest_framework import routers
 
 from account.views import UserViewSet
 from article.views import UniversityViewSet, TeacherViewSet
+from comment.views import CommentViewSet
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
+router.register(r'user', UserViewSet)
 router.register(r'article/university', UniversityViewSet)
 router.register(r'article/teacher', TeacherViewSet)
+router.register(r'comment', CommentViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('', include('comment.urls')),
     path('', include('account.urls')),
 ]

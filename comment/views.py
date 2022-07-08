@@ -1,20 +1,16 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters
-from rest_framework.generics import ListCreateAPIView
 
-from comment.models import *
+from comment.models import Comment
 from comment.serializers import CommentSerializer
 
-__all__ = ['CommentList']
+__all__ = ['CommentViewSet']
 
 
-class CommentList(ListCreateAPIView):
+class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-
-    page_size = 10
-    page_size_query_param = 'count'
-    max_page_size = 50
+    http_method_names = ['head', 'get', 'post']
 
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     filterset_fields = ['teacher_article']
