@@ -15,7 +15,9 @@ export default function getInstituteData(institute_id: number){
 
     const fetching = async () => {
         try {
-            const response = await axios.get(`/article/university/${institute_id}/`, {withCredentials: true});
+            const response = await axios.get(
+                `/article/university/${institute_id}/`,
+                {withCredentials: true});
             institute.value = instituteDataToPost(response.data);
         } catch (e) {
             // teacher.value = {

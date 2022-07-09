@@ -19,6 +19,10 @@ export default defineComponent({
     BaseDialog
   },
   props:{
+    typeRequest:{
+      type: String,
+      required: true
+    },
     modifiedPost:{
       type: Object as PropType<ModifiedPost>,
       required: true
@@ -45,11 +49,11 @@ export default defineComponent({
     const cancelDialog = ref<boolean>(false);
     const reason = ref<string> ("");
     function acceptModification(){
-      sendSolution(modifiedPost.value.post_id, true, "");
+      sendSolution(props.typeRequest, modifiedPost.value.post_id, true, "");
       router.push(`/editRequests`)
     }
     function sendReason(){
-      sendSolution(modifiedPost.value.post_id, false, reason.value);
+      sendSolution(props.typeRequest, modifiedPost.value.post_id, false, reason.value);
       cancelDialog.value = false;
       router.push(`/editRequests`)
     }

@@ -26,12 +26,12 @@ export default createStore<State>({
       {
         id: 1,
         title: "Самые халявные",
-        request_url: "easy"
+        request_url: "easy__rate"
       },
       {
         id: 2,
         title: "Самые строгие",
-        request_url: "-easy"
+        request_url: "-easy__rate"
       }
     ]
   },

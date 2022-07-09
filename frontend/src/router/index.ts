@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
     component: SearchView
   },
   {
-    path: '/editRequests/institute/:requestId',
+    path: '/editRequests/institutes/:requestId',
     name: 'editRequestsInstitute',
     component: EditRequestInstituteView
   },

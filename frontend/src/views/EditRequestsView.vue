@@ -11,7 +11,6 @@ export default defineComponent({
   setup(){
     const { editRequestsTeachers } = getEditRequestsTeacher() ;
     const { editRequestsInstitutes } = getEditRequestsInstitutes();
-    console.log(editRequestsInstitutes.value)
     return {
       editRequestsTeachers,
       editRequestsInstitutes

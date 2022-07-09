@@ -59,8 +59,10 @@ export default function getTeacherData(teacher_id: number){
     });
     const fetching = async () => {
         try {
-            const response = await axios.get(`/article/teacher/${teacher_id}/`);
-            console.log(response.data);
+            const response = await axios.get(
+                `/article/teacher/${teacher_id}/`,
+                {withCredentials: true}
+            );
             teacher.value = teacherDataToPost(response.data);
         } catch (e) {
             // teacher.value = {

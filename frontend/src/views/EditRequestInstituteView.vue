@@ -14,24 +14,25 @@ export default defineComponent({
   },
   setup(){
     const route = useRoute();
-    const request_id = ref<number>(Number(route.params.requestId as string));
-    if (request_id) {
-      const { modifiedInstitute } = getModifiedInstituteData(request_id.value);
-      const { institute } = getInstituteData(modifiedInstitute.value.id);
-
-      return { request_id, modifiedInstitute, institute};
+    const requestId = ref<number>(Number(route.params.requestId as string));
+    const typeRequest = ref<string>("university")
+    if (requestId) {
+      const { modifiedInstitute } = getModifiedInstituteData(requestId.value);
+      console.log(modifiedInstitute.value)
+      const { institute } = getInstituteData(modifiedInstitute.value.post_id);
+      console.log(modifiedInstitute.value, institute.value)
+      return { requestId, modifiedInstitute, institute, typeRequest};
     }
     const modifiedInstitute = ref(undefined);
     const institute = ref(undefined);
-
-    return { request_id, modifiedInstitute, institute};
+    return { requestId, modifiedInstitute, institute, typeRequest};
   }
 })
 </script>
 
 <template>
-  <error-view v-if="isNaN(request_id) || modifiedInstitute === undefined || institute === undefined"></error-view>
-  <base-edit-request v-else :post="institute" :modified-post="modifiedInstitute"/>
+  <error-view v-if="isNaN(requestId) || modifiedInstitute === undefined || institute === undefined"></error-view>
+  <base-edit-request v-else :post="institute" :modified-post="modifiedInstitute" :type-request="typeRequest"/>
 </template>
 
 <style scoped>
