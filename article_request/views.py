@@ -1,11 +1,10 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, redirect
 from rest_framework import viewsets, filters, permissions
 from rest_framework.decorators import api_view, permission_classes
 
 from article_request.models import *
 from article_request.serializers import *
 from article_request.services import proc_request
-
 
 __all__ = ['UniversityRequestViewSet', 'TeacherRequestViewSet', 'answer_article_request']
 
@@ -15,7 +14,7 @@ class UniversityRequestViewSet(viewsets.ModelViewSet):
     http_method_names = ['head', 'get', 'post']
 
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['title', 'created_at']
+    ordering_fields = ['id, ''title', 'created_at']
     ordering = ['title']
 
     def get_serializer_class(self):
@@ -50,3 +49,4 @@ def answer_article_request(request, article_type, rid):
         return HttpResponse(status=400)
 
     proc_request(accept, message, article_type, rid)
+    return redirect('../../')

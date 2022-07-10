@@ -29,8 +29,8 @@ class UniversityRequestSerializer(serializers.ModelSerializer):
 
 class UniversityEditSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TeacherRequest
-        exclude = ['author', 'university_article', 'created_at', 'updated_at']
+        model = UniversityRequest
+        exclude = ['id', 'author', 'university_article', 'created_at', 'updated_at']
 
 
 # Teacher
@@ -55,7 +55,7 @@ class TeacherRequestSerializer(TeacherSerializer):
 
     class Meta:
         model = TeacherRequest
-        exclude = ['author', 'birthday', 'birth_year', 'created_at', 'updated_at']
+        exclude = ['id', 'author', 'birthday', 'birth_year', 'created_at', 'updated_at']
 
 
 class ShortTeacherRequestSerializer(serializers.ModelSerializer):
@@ -67,4 +67,4 @@ class ShortTeacherRequestSerializer(serializers.ModelSerializer):
 class TeacherEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = TeacherRequest
-        exclude = ['author', 'teacher_article', 'created_at', 'updated_at']
+        exclude = ['id', 'author', 'teacher_article', 'created_at', 'updated_at', 'easy']

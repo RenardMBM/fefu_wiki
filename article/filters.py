@@ -14,6 +14,6 @@ class NearBirthdayFilter(filters.BaseFilterBackend):
             today = now().date().replace(year=2020)
 
             return queryset.filter(birthday__gte=today).order_by(self.ordering_field) | \
-                   queryset.filter(birthday__lt=today).order_by(self.ordering_field)
+                queryset.filter(birthday__lt=today).order_by(self.ordering_field)
 
         return queryset

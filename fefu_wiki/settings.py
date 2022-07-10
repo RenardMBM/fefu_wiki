@@ -4,7 +4,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = getenv('SECRET_KEY', 'unsafe')
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -65,7 +65,7 @@ DATABASES = {
         'NAME': getenv('DATABASE_NAME'),
         'USER': getenv('POSTGRES_USER'),
         'PASSWORD': getenv('POSTGRES_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': getenv('POSTGRES_HOST', 'localhost'),
         'PORT': getenv('DATABASE_PORT', '5432'),
     }
 }

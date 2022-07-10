@@ -1,5 +1,5 @@
-from django.conf import settings
 import msal
+from django.conf import settings
 
 __all__ = ['load_cache', 'save_cache', 'build_msal_app', 'build_auth_code_flow']
 _TOKEN_CACHE = 'token_cache'

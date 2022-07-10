@@ -7,6 +7,7 @@ class TeacherStoryInline(admin.TabularInline):
     model = StoryTeacher
 
 
+@admin.register(TeacherRating)
 class TeacherRatingAdmin(admin.ModelAdmin):
     inlines = [
         TeacherStoryInline
@@ -15,6 +16,4 @@ class TeacherRatingAdmin(admin.ModelAdmin):
 
 admin.site.register(UniversityArticle)
 admin.site.register(TeacherArticle)
-admin.site.register(TeacherRating, TeacherRatingAdmin)
 admin.site.register(StoryTeacher)
-

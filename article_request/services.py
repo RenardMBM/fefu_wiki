@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from article_request.models import TeacherRequest, UniversityRequest
 from article.models import TeacherArticle, UniversityArticle
 from article_request.serializers import TeacherEditSerializer, UniversityEditSerializer
-from backend_queue.worker.services import send_email
+from backend_queue.services import send_email
 
 __all__ = ['proc_request']
 
@@ -29,17 +29,24 @@ def accept_request(article_obj, article_type: str) -> None:
 
 
 def _accept_teacher_request(teacher_request: TeacherRequest) -> None:
-    teacher_article = TeacherArticle(pk=teacher_request.teacher_article.id,
-                                     **TeacherEditSerializer(instance=teacher_request).data)
+    data = TeacherEditSerializer(instance=teacher_request).data
+    universities = data['universities']
+    del data['universities']
+    TeacherArticle.objects.filter(
+        pk=teacher_request.teacher_article.id
+    ).update(**data)
+
+    teacher_article = TeacherArticle.objects.get(pk=teacher_request.teacher_article.id)
+    for university in universities:
+        teacher_article.universities.add(university)
     teacher_article.save()
     teacher_request.delete()
 
 
 def _accept_university_request(university_request: UniversityRequest) -> None:
-    university_article = UniversityArticle(pk=university_request.university_article.id,
-                                           **UniversityEditSerializer(
-                                               instance=university_request).data)
-    university_article.save()
+    UniversityArticle.objects.filter(
+        pk=university_request.university_article.id
+    ).update(**UniversityEditSerializer(instance=university_request).data)
     university_request.delete()
 
 

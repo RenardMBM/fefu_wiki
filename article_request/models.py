@@ -1,10 +1,8 @@
 from django.db import models
-from django.db.models.signals import pre_save
-from django.dispatch import receiver
 from django.core.exceptions import ObjectDoesNotExist
 
-from article.models import UniversityArticle, TeacherArticle, TeacherRating
 from account.models import User
+from article.models import UniversityArticle, TeacherArticle, TeacherRating
 
 __all__ = ['UniversityRequest', 'TeacherRequest']
 
@@ -14,22 +12,29 @@ class UniversityRequest(UniversityArticle):
                                            related_name="+")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        try:
+            result = f' | {str(self.university_article)}'
+        except ObjectDoesNotExist:
+            result = ''
+        return f"Change university ({self.id})" + result
+
+    class Meta:
+        verbose_name = "Request to change the university"
+        verbose_name_plural = "Requests to change the university"
+
 
 class TeacherRequest(TeacherArticle):
     teacher_article = models.ForeignKey(TeacherArticle, on_delete=models.CASCADE, related_name="+")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
-@receiver(pre_save, sender=TeacherRequest)  # TODO: упростить, исправить
-def save_or_create_teacher(sender: TeacherRequest, instance: TeacherRequest,  **kwargs):
-    if sender.easy:
-        instance.easy = TeacherRating.objects.create()
-        instance.easy.save()
-
-    else:
+    def __str__(self):
         try:
-            instance.easy.save()
-
+            result = f' | {str(self.teacher_article)}'
         except ObjectDoesNotExist:
-            instance.easy = TeacherRating.objects.create()
-            instance.easy.save()
+            result = ''
+        return f"Change teacher ({self.id})" + result
+
+    class Meta:
+        verbose_name = "Request to change the teacher"
+        verbose_name_plural = "Requests to change the teacher"

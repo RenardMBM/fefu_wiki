@@ -1,11 +1,11 @@
+from django.shortcuts import get_object_or_404, HttpResponse, redirect
 from django_filters.rest_framework import DjangoFilterBackend
-from django.shortcuts import get_object_or_404, HttpResponse
 from rest_framework import viewsets, filters, permissions
 from rest_framework.decorators import api_view, permission_classes
 
+from article.filters import *
 from article.models import *
 from article.serializers import *
-from article.filters import *
 
 __all__ = ['UniversityViewSet', 'TeacherViewSet', 'change_teacher_rate']
 
@@ -22,6 +22,13 @@ class UniversityViewSet(viewsets.ModelViewSet):
         if self.action == 'list':
             return ShortUniversitySerializer
         return UniversitySerializer
+
+    def get_permissions(self):
+        if self.action == 'create':
+            _permissions = [permissions.IsAdminUser]
+        else:
+            _permissions = [permissions.AllowAny]
+        return [permission() for permission in _permissions]
 
 
 class TeacherViewSet(viewsets.ModelViewSet):
@@ -40,9 +47,16 @@ class TeacherViewSet(viewsets.ModelViewSet):
             return ShortTeacherSerializer
         return TeacherSerializer
 
+    def get_permissions(self):
+        if self.action == 'create':
+            _permissions = [permissions.IsAdminUser]
+        else:
+            _permissions = [permissions.AllowAny]
+        return [permission() for permission in _permissions]
+
 
 @api_view(['POST'])
-@permission_classes((permissions.IsAuthenticated,))  # TODO: test this
+@permission_classes([permissions.IsAuthenticated])  # TODO: test this
 def change_teacher_rate(request, aid):
     try:
         # rate_name: str = request.data['rate_name'] # For best times)
@@ -61,3 +75,4 @@ def change_teacher_rate(request, aid):
     story.value = value
     article.easy.save()
     story.save()
+    return redirect('../../')

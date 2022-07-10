@@ -21,7 +21,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 @api_view(['POST'])
-@permission_classes((permissions.IsAuthenticated,))  # TODO: test this
+@permission_classes([permissions.IsAuthenticated])  # TODO: test this
 def change_comment_rate(request, cid):
     try:
         value: int = int(request.data['value'])
